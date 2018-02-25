@@ -19,7 +19,7 @@ class Logger implements ServiceProviderInterface
                 if (php_sapi_name() === 'cli') {
                     $logger->pushHandler(new ErrorLogHandler());
                 } else {
-                    $logger->pushHandler(new StreamHandler($app->getPath('/data/logs.txt')));
+                    $logger->pushHandler(new StreamHandler($app->getPath('data/logs.txt')));
                 }
 
                 return $logger;

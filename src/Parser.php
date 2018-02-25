@@ -41,6 +41,7 @@ class Parser
         $embed = Embed::create($item->get_link());
 
         return [
+            'guid' => $item->get_id(),
             'url' => $embed->url,
             'title' => $embed->title,
             'description' => $embed->description,

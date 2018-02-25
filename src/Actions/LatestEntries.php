@@ -20,7 +20,7 @@ class LatestEntries
             ->select()
             ->leftJoin('feed')
             ->page($page, 50)
-            ->orderBy('id', 'DESC')
+            ->orderBy('publishedAt', 'DESC')
             ->run();
     }
 }

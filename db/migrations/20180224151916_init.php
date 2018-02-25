@@ -40,12 +40,14 @@ class Init extends AbstractMigration
 
         $this->table('entry', ['collation' => 'utf8mb4_unicode_ci'])
             ->addColumn('title', 'string')
+            ->addColumn('guid', 'string')
             ->addColumn('url', 'string')
             ->addColumn('description', 'text', ['null' => true])
             ->addColumn('body', 'text', ['null' => true, 'limit' => MysqlAdapter::TEXT_MEDIUM])
             ->addColumn('publishedAt', 'timestamp', ['null' => true])
             ->addColumn('feed_id', 'integer', ['null' => false])
             ->addIndex(['url'], ['unique' => true])
+            ->addIndex(['guid'], ['unique' => true])
             ->addForeignKey('feed_id', 'feed', 'id', ['delete' => 'CASCADE'])
             ->create();
     }
