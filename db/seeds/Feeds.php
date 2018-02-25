@@ -15,15 +15,10 @@ class Feeds extends AbstractSeed
      */
     public function run()
     {
+        $data = include __DIR__.'/../../subscriptions.php';
+
         $this->table('feed')
-            ->insert([
-                ['feed' => 'http://feeds.feedburner.com/CssTricks'],
-                //['feed' => 'https://www.smashingmagazine.com/feed/'],
-                //['feed' => 'http://marcaporhombro.com/feed/'],
-                //['feed' => 'http://www.brandemia.org/feed/'],
-                //['feed' => 'https://inclusive-components.design/rss/'],
-                //['feed' => 'https://escss.blogspot.com/feeds/posts/default?alt=rss'],
-            ])
+            ->insert($data)
             ->save();
     }
 }

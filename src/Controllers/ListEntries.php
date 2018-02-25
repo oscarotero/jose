@@ -18,10 +18,17 @@ class ListEntries
 
     public function __invoke(ServerRequestInterface $request)
     {
-        $latestEntries = new LatestEntries($this->app->get('db'));
+        $latestEntries = new LatestEntries(
+            $this->app->get('db'),
+            $this->app->get('logger')
+        );
+
+        $query = $request->getQueryParams();
+        $page = (int) ($query['page'] ?? 1);
         
-        echo $this->app->get('templates')->render('list-entries', [
-            'entries' => $latestEntries()
+        echo $this->app->get('templates')->render('entries', [
+            'entries' => $latestEntries($page),
+            'page' => $page
         ]);
     }
 }

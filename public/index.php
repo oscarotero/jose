@@ -14,11 +14,6 @@ ini_set('expose_php', 0);
 //Init composer
 include dirname(__DIR__).'/vendor/autoload.php';
 
-//Init .env variables
-//(new Dotenv\Dotenv(__DIR__))->load();
-
-//Env::init();
-
 if (php_sapi_name() === 'cli-server' && Server::run(__DIR__)) {
     return false;
 }

@@ -1,7 +1,7 @@
 <?php
 
-
 use Phinx\Migration\AbstractMigration;
+use Phinx\Db\Adapter\MysqlAdapter;
 
 class Init extends AbstractMigration
 {
@@ -28,23 +28,25 @@ class Init extends AbstractMigration
      */
     public function change()
     {
-        $this->table('feed')
+        $this->table('feed', ['collation' => 'utf8mb4_unicode_ci'])
             ->addColumn('title', 'string', ['null' => true])
             ->addColumn('url', 'string', ['null' => true])
             ->addColumn('feed', 'string')
             ->addColumn('lastCheckAt', 'timestamp', ['null' => true])
+            ->addColumn('contentSelector', 'string', ['null' => true])
+            ->addColumn('ignoredSelector', 'string', ['null' => true])
             ->addIndex(['feed'], ['unique' => true])
             ->create();
 
-        $this->table('entry')
+        $this->table('entry', ['collation' => 'utf8mb4_unicode_ci'])
             ->addColumn('title', 'string')
             ->addColumn('url', 'string')
             ->addColumn('description', 'text', ['null' => true])
-            ->addColumn('body', 'text', ['null' => true])
+            ->addColumn('body', 'text', ['null' => true, 'limit' => MysqlAdapter::TEXT_MEDIUM])
             ->addColumn('publishedAt', 'timestamp', ['null' => true])
             ->addColumn('feed_id', 'integer', ['null' => false])
             ->addIndex(['url'], ['unique' => true])
-            ->addForeignKey('feed_id', 'feed', 'id')
+            ->addForeignKey('feed_id', 'feed', 'id', ['delete' => 'CASCADE'])
             ->create();
     }
 }

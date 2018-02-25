@@ -4,17 +4,21 @@ namespace Jose\Actions;
 
 use Jose\Parser;
 use SimpleCrud\SimpleCrud;
+use Psr\Log\LoggerInterface;
 use Exception;
+use Throwable;
 use Datetime;
 
 class FetchNewEntries
 {
     private $db;
     private $parser;
+    private $logger;
 
-    public function __construct(SimpleCrud $db, Parser $parser = null)
+    public function __construct(SimpleCrud $db, LoggerInterface $logger = null, Parser $parser = null)
     {
         $this->db = $db;
+        $this->logger = $logger;
         $this->parser = $parser ?: new Parser();
     }
 
@@ -60,14 +64,25 @@ class FetchNewEntries
                 ->run();
 
             if (!$exists) {
-                $data = $this->parser->parseEntry($item);
+                $data = $this->parser->parseEntry($item, $feed);
                 $data['feed_id'] = $feed->id;
 
+            try {
                 $this->db->entry
                     ->insert()
                     ->duplications()
                     ->data($data)
                     ->run();
+                } catch (Throwable $e) {
+                        throw $e;
+                    if (!$this->logger) {
+                    }
+
+                    $this->logger->error($e->getMessage(), [
+                        'exception' => $e,
+                        'data' => $data
+                    ]);
+                }
             }
         }
     }

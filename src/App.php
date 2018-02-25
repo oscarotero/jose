@@ -18,6 +18,7 @@ class App extends FolApp
         $this->addServiceProvider(new Providers\Database);
         $this->addServiceProvider(new Providers\Router);
         $this->addServiceProvider(new Providers\Templates);
+        $this->addServiceProvider(new Providers\Logger);
     }
 
     public function dispatch(ServerRequestInterface $request): ResponseInterface
@@ -26,6 +27,7 @@ class App extends FolApp
 
         return Dispatcher::run([
             new Middlewares\ContentType(),
+            new Middlewares\ErrorHandler(),
             new Middlewares\FastRoute($this->get('router')),
             new Middlewares\RequestHandler($container),
         ], $request);

@@ -14,12 +14,13 @@ class LatestEntries
         $this->db = $db;
     }
 
-    public function __invoke(): RowCollection
+    public function __invoke(int $page = 1): RowCollection
     {
         return $this->db->entry
             ->select()
             ->leftJoin('feed')
-            ->limit(50)
+            ->page($page, 50)
+            ->orderBy('id', 'DESC')
             ->run();
     }
 }

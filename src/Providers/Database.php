@@ -14,7 +14,7 @@ class Database implements ServiceProviderInterface
         return [
             'pdo' => function (): PDO {
                 return new PDO(
-                    'mysql:dbname=jose;host=localhost;charset=utf8',
+                    'mysql:dbname=jose;host=localhost;charset=utf8mb4',
                     'root',
                     ''
                 );

@@ -14,6 +14,13 @@ a:visited {
 }
 a:hover {
     text-decoration: underline;
+    text-decoration-skip-ink: auto;
+}
+:focus {
+    outline: dotted blue 1px;
+    outline-offset: .3em;
+    background-color: white;
+    z-index: 2;
 }
 
 /* Entries list */
@@ -23,10 +30,7 @@ a:hover {
     padding: 0;
 }
 .entries > li {
-    margin-top: 4rem;
-}
-.entries > li:first-child {
-    margin-top: 0;
+    margin-bottom: 4rem;
 }
 
 /* Entry */
@@ -51,6 +55,17 @@ a:hover {
 }
 
 /* Entry body */
+.entry-body {
+    padding-left: 1em;
+}
+.entry-body summary {
+    cursor: default;
+    color: blue;
+    max-width: 10em;
+}
+.entry-body summary:hover {
+    text-decoration: underline;
+}
 .entry-body {
     font-size: 1em;
     line-height: 1.4;
@@ -86,6 +101,9 @@ a:hover {
 .entry-body figcaption {
     font-size: .8rem;
 }
+.entry-body ul {
+    list-style-type: disc;
+}
 
 /* Refresh button */
 .refresh {
@@ -93,18 +111,21 @@ a:hover {
     top: 1em;
     right: 1em;
 }
-.refresh button {
+.button {
     background: blue;
     color: white;
     border: none;
     font-size: 1rem;
     font-weight: bold;
-    padding: .3em .6em;
+    padding: .6em;
     border-radius: 2px;
-    box-shadow: 0 2px 2px -1px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 3px -1px rgba(0,0,0,0.3);
     transition: background-color .2s;
 }
-.refresh button:hover {
+.button:visited {
+    color: white;
+}
+.button:hover {
     background-color: midnightblue;
 }
 
@@ -114,6 +135,8 @@ a:hover {
     font-size: 2rem;
     color: lightgray;
     padding: 20vh 0;
-    border: dashed 1px;
-    border-radius: 2px;
+}
+
+.pagination {
+    margin-top: 
 }

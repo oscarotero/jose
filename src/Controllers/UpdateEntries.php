@@ -19,7 +19,11 @@ class UpdateEntries
 
     public function __invoke(ServerRequestInterface $request)
     {
-        $newEntries = new FetchNewEntries($this->app->get('db'));
+        $newEntries = new FetchNewEntries(
+            $this->app->get('db'),
+            $this->app->get('logger')
+        );
+
         $newEntries();
         
         return Factory::createResponse(302)
