@@ -1,0 +1,22 @@
+{
+    "require": {
+        "oscarotero/fol": "^0.3.0",
+        "simplepie/simplepie": "^1.5",
+        "oscarotero/middleland": "^1.0",
+        "zendframework/zend-diactoros": "^1.7",
+        "oscarotero/server": "^0.2.0",
+        "middlewares/utils": "^1.0",
+        "middlewares/negotiation": "^1.0",
+        "embed/embed": "^3.3",
+        "simple-crud/simple-crud": "^6.11",
+        "robmorgan/phinx": "^0.9.2",
+        "league/plates": "^3.3",
+        "middlewares/fast-route": "^1.0",
+        "middlewares/request-handler": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jose\\": "src/"
+        }
+    }
+}
