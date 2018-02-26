@@ -3,6 +3,7 @@
 include __DIR__.'/vendor/autoload.php';
 
 use Jose\Actions;
+use Symfony\Component\Yaml\Yaml;
 
 $app = new Jose\App();
 
@@ -15,5 +16,5 @@ $newEntries = new Actions\FetchNewEntries(
     $app->get('logger')
 );
 
-$updateFeeds(include 'subscriptions.php');
+$updateFeeds(Yaml::parseFile('subscriptions.yaml'));
 $newEntries();

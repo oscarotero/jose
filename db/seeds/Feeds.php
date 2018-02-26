@@ -1,7 +1,7 @@
 <?php
 
-
 use Phinx\Seed\AbstractSeed;
+use Symfony\Component\Yaml\Yaml;
 
 class Feeds extends AbstractSeed
 {
@@ -15,7 +15,7 @@ class Feeds extends AbstractSeed
      */
     public function run()
     {
-        $data = include __DIR__.'/../../subscriptions.php';
+        $data = Yaml::parseFile(__DIR__.'/../../subscriptions.yaml');
 
         $this->table('feed')
             ->insert($data)
