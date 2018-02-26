@@ -13,7 +13,7 @@ class App extends FolApp
 {
     public function __construct()
     {
-        parent::__construct(dirname(__DIR__), Factory::createUri('http://localhost:8000'));
+        parent::__construct(dirname(__DIR__), Factory::createUri('https://oscarotero.com/jose'));
 
         $this->addServiceProvider(new Providers\Database);
         $this->addServiceProvider(new Providers\Router);
@@ -27,6 +27,7 @@ class App extends FolApp
 
         return Dispatcher::run([
             new Middlewares\ContentType(),
+            new Middlewares\BasePath($this->getUri()->getPath()),
             new Middlewares\ErrorHandler(),
             new Middlewares\FastRoute($this->get('router')),
             new Middlewares\RequestHandler($container),
