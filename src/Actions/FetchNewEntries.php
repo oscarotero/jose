@@ -4,6 +4,7 @@ namespace Jose\Actions;
 
 use Jose\Parser;
 use SimpleCrud\SimpleCrud;
+use SimpleCrud\Row;
 use Psr\Log\LoggerInterface;
 use Exception;
 use Throwable;
@@ -29,23 +30,13 @@ class FetchNewEntries
             ->run();
 
         foreach ($feeds as $feed) {
-            $this->updateFeed($feed->feed);
+            $this->updateFeed($feed);
         }
     }
 
-    private function updateFeed(string $url)
+    private function updateFeed(Row $feed)
     {
-        $feed = $this->db->feed
-            ->select()
-            ->one()
-            ->by('feed', $url)
-            ->run();
-
-        if (!$feed) {
-            throw new Exception("Invalid feed '$url'");
-        }
-
-        $parsed = $this->parser->parseFeed($url);
+        $parsed = $this->parser->parseFeed($feed->feed);
         
         if (!$feed->lastCheckAt) {
             $feed->title = $parsed['title'];
@@ -59,7 +50,7 @@ class FetchNewEntries
         foreach ($parsed['entries'] as $item) {
             $exists = $this->db->entry
                 ->count()
-                ->by('url', $item->get_link())
+                ->by('guid', $item->get_id())
                 ->limit(1)
                 ->run();
 
@@ -67,15 +58,15 @@ class FetchNewEntries
                 $data = $this->parser->parseEntry($item, $feed);
                 $data['feed_id'] = $feed->id;
 
-            try {
-                $this->db->entry
-                    ->insert()
-                    ->duplications()
-                    ->data($data)
-                    ->run();
+                try {
+                    $this->db->entry
+                        ->insert()
+                        ->duplications()
+                        ->data($data)
+                        ->run();
                 } catch (Throwable $e) {
-                        throw $e;
                     if (!$this->logger) {
+                        throw $e;
                     }
 
                     $this->logger->error($e->getMessage(), [
