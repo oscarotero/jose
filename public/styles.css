@@ -53,6 +53,23 @@ a:hover {
 .entry-description {
     line-height: 1.4;
 }
+.entry-save {
+    float: right;
+    margin-right: .5em;
+}
+.entry-save-button {
+    background: white;
+    color: gray;
+    border: solid 1px lightgray;
+    font-size: .8rem;
+    padding: .2em .6em;
+    border-radius: 2px;
+}
+.entry-save.is-saved .entry-save-button {
+    background: blue;
+    color: white;
+    border-color: blue;
+}
 
 /* Entry body */
 .entry-body {
@@ -71,6 +88,8 @@ a:hover {
     line-height: 1.4;
 }
 .entry-body img {
+    width: auto;
+    height: auto;
     max-width: 100%;
     display: block;
     margin: 1em 0;

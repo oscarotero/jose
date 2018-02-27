@@ -1,4 +1,9 @@
 <article class="entry">
+    <form action="./save" method="post" class="entry-save<?= $entry->isSaved ? ' is-saved' : '' ?>">
+        <input type="hidden" name="id" value="<?= $entry->id ?>">
+        <button type="submit" class="entry-save-button">Save</button>
+    </form>
+
     <header class="entry-header">
         <h1>
             <a href="<?= $entry->url ?>" target="_blank">
@@ -10,7 +15,7 @@
             <a href="<?= $entry->feed->url ?>" target="_blank">
                 <?= $entry->feed->title ?>
             </a>
-            <time><?= $entry->publishedAt->format('Y-m-d H:i:s') ?></time>
+            <time><?= $timeago->inWords($entry->publishedAt->format('Y-m-d H:i:s')) ?></time>
         </p>
     </header>
 

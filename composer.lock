@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "365e601c9e623e0159a2eb4a8c83b5f1",
-    "content-hash": "eed1428fadc4b61b63ef4c77661d0f43",
+    "hash": "093f5e4436a869649f96d9b09cc0eaf5",
+    "content-hash": "bf369683f6e5e475dfe8d47221947e7c",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -198,6 +198,53 @@
                 "response"
             ],
             "time": "2017-03-24 14:48:51"
+        },
+        {
+            "name": "jimmiw/php-time-ago",
+            "version": "2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jimmiw/php-time-ago.git",
+                "reference": "59cf0aad5862d12217f944447875a24c63dd8645"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jimmiw/php-time-ago/zipball/59cf0aad5862d12217f944447875a24c63dd8645",
+                "reference": "59cf0aad5862d12217f944447875a24c63dd8645",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/dbunit": "2.0.*",
+                "phpunit/phpunit": "5.*@stable"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Westsworld": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jimmi Westerberg",
+                    "homepage": "http://www.westsworld.dk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple module, that displays the date in a \"time ago\" format",
+            "homepage": "https://github.com/jimmiw/php-time-ago",
+            "keywords": [
+                "distance of time",
+                "time ago",
+                "time ago in words"
+            ],
+            "time": "2018-02-21 20:27:36"
         },
         {
             "name": "league/plates",

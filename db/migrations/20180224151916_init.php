@@ -35,6 +35,7 @@ class Init extends AbstractMigration
             ->addColumn('lastCheckAt', 'timestamp', ['null' => true])
             ->addColumn('contentSelector', 'string', ['null' => true])
             ->addColumn('ignoredSelector', 'string', ['null' => true])
+            ->addColumn('isEnabled', 'boolean', ['default' => 1])
             ->addIndex(['feed'], ['unique' => true])
             ->create();
 
@@ -45,6 +46,7 @@ class Init extends AbstractMigration
             ->addColumn('description', 'text', ['null' => true])
             ->addColumn('body', 'text', ['null' => true, 'limit' => MysqlAdapter::TEXT_MEDIUM])
             ->addColumn('publishedAt', 'timestamp', ['null' => true])
+            ->addColumn('isSaved', 'boolean', ['default' => 0])
             ->addColumn('feed_id', 'integer', ['null' => false])
             ->addIndex(['url'], ['unique' => true])
             ->addIndex(['guid'], ['unique' => true])

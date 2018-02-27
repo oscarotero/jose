@@ -120,6 +120,10 @@ class Parser
         foreach ($this->select($xpath, '[href]', false, $context) as $element) {
             $href = $element->getAttribute('href');
             $element->setAttribute('href', $url->getAbsolute($href));
+
+            if ($element->nodeName === 'a') {
+                $element->setAttribute('target', '_blank');
+            }
         }
 
         foreach ($this->select($xpath, '[src]', false, $context) as $element) {

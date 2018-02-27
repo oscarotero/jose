@@ -17,6 +17,7 @@ class Router implements ServiceProviderInterface
                 return FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
                     $r->addRoute('GET', '/', Controllers\ListEntries::class);
                     $r->addRoute('POST', '/', Controllers\UpdateEntries::class);
+                    $r->addRoute('POST', '/save', Controllers\ToggleSave::class);
                 });
             },
         ];

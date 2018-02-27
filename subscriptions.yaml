@@ -1,6 +1,34 @@
-
-
+- feed: http://feeds.feedburner.com/CssTricks
+  contentSelector: .article-content
+  ignoredSelector: .jp-relatedposts
 
 - feed: https://www.smashingmagazine.com/feed/
   contentSelector: '#article__content'
   ignoredSelector: .product-panel,.signature
+
+- feed: https://inclusive-components.design/rss/
+  contentSelector: '#main'
+
+- feed: http://marcaporhombro.com/feed/
+  contentSelector: .entry-content
+  ignoredSelector: .jp-relatedposts,.sharedaddy
+
+- title: Brandemia
+  feed: http://www.brandemia.org/feed/
+  contentSelector: .node-article
+  ignoredSelector: .view-profile
+
+- feed: https://escss.blogspot.com/feeds/posts/default?alt=rss
+  contentSelector: .post-body
+  ignoredSelector: .autor-invitado,#promote,.post-datos,.autor-post
+
+- feed: http://feeds.feedburner.com/alistapart/main
+  contentSelector: .main-content
+  ignoredSelector: .nocontent,.promo-box,.aside-breaker,.content-minutiae,.utility-side-bar
+
+- feed: http://feeds.feedburner.com/chrisheilmann
+  contentSelector: .entry
+
+- feed: http://feeds2.feedburner.com/tympanus
+  contentSelector: .ct-post-content,#ct-coll-container
+  ignoredSelector: .ct-post-nav,.ct-coll-cover

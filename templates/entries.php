@@ -1,4 +1,7 @@
-<?php $this->layout('layout') ?>
+<?php
+$this->layout('layout');
+$timeago = new Westsworld\TimeAgo();
+?>
 
 <form method="post" class="refresh">
     <button type="submit" class="button">Refresh</button>
@@ -8,7 +11,7 @@
 <ul class="entries">
     <?php foreach ($entries as $entry): ?>
     <li>
-        <?php $this->insert('entry', ['entry' => $entry]) ?>
+        <?php $this->insert('entry', ['entry' => $entry, 'timeago' => $timeago]) ?>
     </li>
     <?php endforeach ?>
 </ul>

@@ -19,6 +19,7 @@ class LatestEntries
         return $this->db->entry
             ->select()
             ->leftJoin('feed')
+            ->where('feed.isEnabled = 1')
             ->page($page, 50)
             ->orderBy('publishedAt', 'DESC')
             ->run();

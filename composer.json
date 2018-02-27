@@ -18,7 +18,8 @@
         "symfony/yaml": "^3.0|^4.0",
         "middlewares/base-path": "^1.0",
         "vlucas/phpdotenv": "^2.4",
-        "oscarotero/env": "^1.1"
+        "oscarotero/env": "^1.1",
+        "jimmiw/php-time-ago": "^2.0"
     },
     "autoload": {
         "psr-4": {
