@@ -18,6 +18,11 @@ if (php_sapi_name() === 'cli-server' && Server::run(__DIR__)) {
     return false;
 }
 
+//Init .env variables
+(new Dotenv\Dotenv(dirname(__DIR__)))->load();
+
+Env::init();
+
 //Execute the app
 $app = new Jose\App();
 $response = $app->dispatch(ServerRequestFactory::fromGlobals());

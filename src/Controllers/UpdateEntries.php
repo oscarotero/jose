@@ -27,6 +27,6 @@ class UpdateEntries
         $newEntries();
         
         return Factory::createResponse(302)
-            ->withHeader('Location', '/');
+            ->withHeader('Location', (string) $this->app->getUri());
     }
 }

@@ -6,6 +6,7 @@ use SimplePie;
 use SimplePie_Item;
 use Embed\Embed;
 use Embed\Http\Response;
+use Embed\Http\Url;
 use SimpleCrud\Row;
 use Symfony\Component\CssSelector\CssSelectorConverter;
 use DOMDocument;
@@ -75,6 +76,7 @@ class Parser
 
         if ($element) {
             $this->cleanCode($xpath, $element);
+            $this->resolveUrls($xpath, $element, $response->getUrl());
 
             $html = '';
 
@@ -82,16 +84,16 @@ class Parser
                 $html .= $child->ownerDocument->saveHTML($child);
             }
 
-            return $html;
+            return trim($html);
         }
     }
 
     /**
      * @return DOMElement|array|null
      */
-    private function select(DOMXPath $xpath, string $selector, bool $returnFirst = false)
+    private function select(DOMXPath $xpath, string $selector, bool $returnFirst = false, DOMNode $context = null)
     {
-        $entries = $xpath->query($this->converter->toXpath($selector));
+        $entries = $xpath->query($this->converter->toXpath($selector), $context);
 
         if ($entries->length) {
             return $returnFirst ? $entries->item(0) : iterator_to_array($entries, false);
@@ -102,7 +104,7 @@ class Parser
 
     private function cleanCode(DOMXPath $xpath, DOMNode $context)
     {
-        foreach ($this->select($xpath, '[class],[id],[style]') as $element) {
+        foreach ($this->select($xpath, '[class],[id],[style]', false, $context) as $element) {
             $element->removeAttribute('class');
             $element->removeAttribute('id');
             $element->removeAttribute('style');
@@ -110,6 +112,23 @@ class Parser
 
         foreach ($this->select($xpath, '[aria-hidden],[hidden],meta,style,canvas,svg') as $element) {
             $element->parentNode->removeChild($element);
+        }
+    }
+
+    private function resolveUrls(DOMXPath $xpath, DOMNode $context, Url $url)
+    {
+        foreach ($this->select($xpath, '[href]', false, $context) as $element) {
+            $href = $element->getAttribute('href');
+            $element->setAttribute('href', $url->getAbsolute($href));
+        }
+
+        foreach ($this->select($xpath, '[src]', false, $context) as $element) {
+            $src = $element->getAttribute('src');
+            $element->setAttribute('src', $url->getAbsolute($src));
+
+            if ($element->hasAttribute('srcset')) {
+                $element->removeAttribute('srcset');
+            }
         }
     }
 }

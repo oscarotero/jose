@@ -13,7 +13,7 @@ class App extends FolApp
 {
     public function __construct()
     {
-        parent::__construct(dirname(__DIR__), Factory::createUri('https://oscarotero.com/jose'));
+        parent::__construct(dirname(__DIR__), Factory::createUri(env('JOSE_URL')));
 
         $this->addServiceProvider(new Providers\Database);
         $this->addServiceProvider(new Providers\Router);
