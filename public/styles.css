@@ -4,6 +4,7 @@ body {
     margin: 0 auto 8vh auto;
     width: 90%;
     max-width: 60rem;
+    overflow-x: hidden;
 }
 a {
     text-decoration: none;
