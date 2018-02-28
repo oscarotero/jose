@@ -3,9 +3,19 @@ $this->layout('layout');
 $timeago = new Westsworld\TimeAgo();
 ?>
 
-<form method="post" class="refresh">
-    <button type="submit" class="button">Refresh</button>
-</form>
+<nav class="menu">
+    <a href="./" class="menu-logo"><strong>José</strong></a>
+
+    <?php if (empty($saved)): ?>
+    <a href="?saved=1">Show saved</a>
+    <?php else: ?>
+    <em>Displaying saved</em>
+    <?php endif ?>
+
+    <form method="post" class="refresh">
+        <button type="submit" class="button">Refresh</button>
+    </form>
+</nav>
 
 <?php if (count($entries)): ?>
 <ul class="entries">

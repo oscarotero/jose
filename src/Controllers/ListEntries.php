@@ -25,10 +25,12 @@ class ListEntries
 
         $query = $request->getQueryParams();
         $page = (int) ($query['page'] ?? 1);
+        $saved = (bool) ($query['saved'] ?? false);
         
         echo $this->app->get('templates')->render('entries', [
-            'entries' => $latestEntries($page),
-            'page' => $page
+            'entries' => $latestEntries($page, $saved),
+            'page' => $page,
+            'saved' => $saved
         ]);
     }
 }

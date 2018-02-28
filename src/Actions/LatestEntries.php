@@ -14,14 +14,19 @@ class LatestEntries
         $this->db = $db;
     }
 
-    public function __invoke(int $page = 1): RowCollection
+    public function __invoke(int $page = 1, bool $saved = false): RowCollection
     {
-        return $this->db->entry
+        $query = $this->db->entry
             ->select()
             ->leftJoin('feed')
             ->where('feed.isEnabled = 1')
             ->page($page, 50)
-            ->orderBy('publishedAt', 'DESC')
-            ->run();
+            ->orderBy('publishedAt', 'DESC');
+
+        if ($saved) {
+            $query->where('entry.isSaved = 1');
+        }
+
+        return $query->run();
     }
 }
