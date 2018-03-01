@@ -33,6 +33,16 @@ class App extends FolApp
             new Middlewares\GzipEncoder(),
             new Middlewares\ContentType(),
             new Middlewares\BasePath($this->getUri()->getPath()),
+            function ($request, $next) {
+                $query = $request->getQueryParams();
+
+                if (!empty($query['path'])) {
+                    $uri = $request->getUri()->withPath($query['path']);
+                    $request = $request->withUri($uri);
+                }
+
+                return $next->handle($request);
+            },
             new Middlewares\FastRoute($this->get('router')),
             new Middlewares\RequestHandler($container),
         ], $request);

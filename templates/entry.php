@@ -1,5 +1,5 @@
 <article class="entry">
-    <form action="./save" method="post" class="entry-save<?= $entry->isSaved ? ' is-saved' : '' ?>">
+    <form action="?path=/save" method="post" class="entry-save<?= $entry->isSaved ? ' is-saved' : '' ?>">
         <input type="hidden" name="id" value="<?= $entry->id ?>">
         <button type="submit" class="entry-save-button">Save</button>
     </form>
