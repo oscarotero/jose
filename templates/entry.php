@@ -4,6 +4,10 @@
         <button type="submit" class="entry-save-button">Save</button>
     </form>
 
+    <?php if (!empty($entry->image)): ?>
+    <img src="<?= $entry->image->data ?>" class="entry-image" width="100" height="100">
+    <?php endif ?>
+
     <header class="entry-header">
         <h1>
             <a href="<?= $entry->url ?>" target="_blank">
@@ -18,6 +22,7 @@
             <time><?= $timeago->inWords($entry->publishedAt->format('Y-m-d H:i:s')) ?></time>
         </p>
     </header>
+
 
     <p class="entry-description">
         <?= $entry->description ?>

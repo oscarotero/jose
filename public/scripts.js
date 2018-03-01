@@ -15,7 +15,8 @@ document.body.addEventListener('submit', e => {
 
         fetch(e.target.action, {
             method: "POST",
-            body: new FormData(e.target)
+            body: new FormData(e.target),
+            credentials: 'same-origin'
         })
         .then(response => response.text())
         .then(text => e.target.classList.toggle('is-saved', text == 1));

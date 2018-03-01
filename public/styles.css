@@ -54,9 +54,14 @@ a:hover {
 .entry-description {
     line-height: 1.4;
 }
+.entry-image {
+    float: left;
+    margin: 0 1em .5em 0;
+}
 .entry-save {
     float: right;
     margin-left: 1em;
+    margin-bottom: 1em;
 }
 .entry-save-button {
     background: white;
@@ -75,6 +80,7 @@ a:hover {
 /* Entry body */
 .entry-body {
     padding-left: 1em;
+    clear: both;
 }
 .entry-body summary {
     cursor: default;
@@ -102,7 +108,7 @@ a:hover {
 }
 .entry-body hr {
     border: 0;
-    border-top: solid 2px lightgray;
+    border-top: solid 1px lightgray;
 }
 .entry-body pre {
     background-color: aliceblue;
@@ -123,6 +129,18 @@ a:hover {
 }
 .entry-body ul {
     list-style-type: disc;
+}
+.entry-body table {
+    border-collapse: collapse;
+    font-size: .9rem;
+}
+.entry-body th {
+    background: aliceblue;
+    padding: .3em .6em;
+}
+.entry-body td {
+    border-bottom: solid 1px lightgray;
+    padding: .6em;
 }
 
 /* Menu */

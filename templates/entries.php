@@ -9,7 +9,7 @@ $timeago = new Westsworld\TimeAgo();
     <?php if (empty($saved)): ?>
     <a href="?saved=1">Show saved</a>
     <?php else: ?>
-    <em>Displaying saved</em>
+    <a href="./">Restore</a>
     <?php endif ?>
 
     <form method="post" class="refresh">

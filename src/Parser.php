@@ -47,6 +47,7 @@ class Parser
             'title' => $embed->title,
             'description' => $embed->description,
             'publishedAt' => $item->get_date('Y-m-d H:i:s') ?? $embed->publishedDate,
+            'image' => $embed->image,
             'body' => $this->extractBody($feed, $embed->getResponse()) ?: $item->get_content(true)
         ];
     }

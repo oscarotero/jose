@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "093f5e4436a869649f96d9b09cc0eaf5",
-    "content-hash": "bf369683f6e5e475dfe8d47221947e7c",
+    "hash": "d2642808db545f2df2d6455508b80959",
+    "content-hash": "a9193e0fd3df71a7e697ec5d38cb78be",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -200,6 +200,51 @@
             "time": "2017-03-24 14:48:51"
         },
         {
+            "name": "imagecow/imagecow",
+            "version": "v2.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oscarotero/imagecow.git",
+                "reference": "03b0a77d0b0929302fb76cf33584673d349d33f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oscarotero/imagecow/zipball/03b0a77d0b0929302fb76cf33584673d349d33f5",
+                "reference": "03b0a77d0b0929302fb76cf33584673d349d33f5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8|^6.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Imagecow\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oscar Otero",
+                    "email": "oom@oscarotero.com",
+                    "homepage": "http://oscarotero.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP library to manipulate and generate responsive images",
+            "homepage": "https://github.com/oscarotero/imagecow/",
+            "keywords": [
+                "image"
+            ],
+            "time": "2018-01-31 20:53:09"
+        },
+        {
             "name": "jimmiw/php-time-ago",
             "version": "2.0.4",
             "source": {
@@ -348,6 +393,55 @@
             "time": "2018-01-24 21:02:48"
         },
         {
+            "name": "middlewares/encoder",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/middlewares/encoder.git",
+                "reference": "70532355dfc1b8f8dc966ad6580f214477ac9df2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/middlewares/encoder/zipball/70532355dfc1b8f8dc966ad6580f214477ac9df2",
+                "reference": "70532355dfc1b8f8dc966ad6580f214477ac9df2",
+                "shasum": ""
+            },
+            "require": {
+                "middlewares/utils": "^1.0",
+                "php": "^7.0",
+                "psr/http-server-middleware": "^1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "phpunit/phpunit": "^6.0",
+                "squizlabs/php_codesniffer": "^3.0",
+                "zendframework/zend-diactoros": "^1.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Middlewares\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Middleware to encode the response body to gzip or deflate",
+            "homepage": "https://github.com/middlewares/encoder",
+            "keywords": [
+                "compression",
+                "deflate",
+                "encoding",
+                "gzip",
+                "http",
+                "middleware",
+                "psr-15",
+                "psr-7"
+            ],
+            "time": "2018-01-27 14:26:19"
+        },
+        {
             "name": "middlewares/error-handler",
             "version": "v1.0.0",
             "source": {
@@ -442,6 +536,55 @@
                 "server"
             ],
             "time": "2018-01-27 11:51:30"
+        },
+        {
+            "name": "middlewares/http-authentication",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/middlewares/http-authentication.git",
+                "reference": "82621e53cd89565cf23c2e32f564e058d0be4917"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/middlewares/http-authentication/zipball/82621e53cd89565cf23c2e32f564e058d0be4917",
+                "reference": "82621e53cd89565cf23c2e32f564e058d0be4917",
+                "shasum": ""
+            },
+            "require": {
+                "middlewares/utils": "^1.0",
+                "php": "^7.0",
+                "psr/http-server-middleware": "^1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "phpunit/phpunit": "^6.0",
+                "squizlabs/php_codesniffer": "^3.0",
+                "zendframework/zend-diactoros": "^1.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Middlewares\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Middleware to implement Basic and Digest Http authentication",
+            "homepage": "https://github.com/middlewares/http-authentication",
+            "keywords": [
+                "Authentication",
+                "basic",
+                "digest",
+                "http",
+                "middleware",
+                "psr-15",
+                "psr-7",
+                "server"
+            ],
+            "time": "2018-01-25 22:24:18"
         },
         {
             "name": "middlewares/negotiation",

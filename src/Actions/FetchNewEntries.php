@@ -6,7 +6,7 @@ use Jose\Parser;
 use SimpleCrud\SimpleCrud;
 use SimpleCrud\Row;
 use Psr\Log\LoggerInterface;
-use Exception;
+use Imagecow\Image;
 use Throwable;
 use Datetime;
 
@@ -58,6 +58,12 @@ class FetchNewEntries
                 $data = $this->parser->parseEntry($item, $feed);
                 $data['feed_id'] = $feed->id;
 
+                if ($data['image']) {
+                    $data['image_id'] = $this->saveImage($data['image']);
+                }
+
+                unset($data['image']);
+
                 try {
                     $this->db->entry
                         ->insert()
@@ -75,6 +81,32 @@ class FetchNewEntries
                     ]);
                 }
             }
+        }
+    }
+
+    private function saveImage(string $url) {
+        $image = $this->db->image
+            ->select()
+            ->one()
+            ->by('url', $url)
+            ->run();
+
+        if ($image) {
+            return $image->id;
+        }
+
+        try {
+            return $this->db->image
+                ->insert()
+                ->data([
+                    'url' => $url,
+                    'data' => Image::fromFile($url)
+                                ->resizeCrop(100, 100)
+                                ->format('jpg')
+                                ->base64()
+                ])
+                ->run();
+        } catch (Throwable $e) {
         }
     }
 }

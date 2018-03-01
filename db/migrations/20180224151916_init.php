@@ -39,6 +39,11 @@ class Init extends AbstractMigration
             ->addIndex(['feed'], ['unique' => true])
             ->create();
 
+        $this->table('image', ['collation' => 'utf8mb4_unicode_ci'])
+            ->addColumn('url', 'string', ['null' => true])
+            ->addColumn('data', 'text', ['null' => true])
+            ->create();
+
         $this->table('entry', ['collation' => 'utf8mb4_unicode_ci'])
             ->addColumn('title', 'string')
             ->addColumn('guid', 'string')
@@ -48,9 +53,11 @@ class Init extends AbstractMigration
             ->addColumn('publishedAt', 'timestamp', ['null' => true])
             ->addColumn('isSaved', 'boolean', ['default' => 0])
             ->addColumn('feed_id', 'integer', ['null' => false])
+            ->addColumn('image_id', 'integer', ['null' => true])
             ->addIndex(['url'], ['unique' => true])
             ->addIndex(['guid'], ['unique' => true])
             ->addForeignKey('feed_id', 'feed', 'id', ['delete' => 'CASCADE'])
-            ->create();
+            ->addForeignKey('image_id', 'image', 'id', ['delete' => 'SET_NULL'])
+            ->create();        
     }
 }
