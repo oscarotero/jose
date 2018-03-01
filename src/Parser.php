@@ -79,6 +79,12 @@ class Parser
             $this->cleanCode($xpath, $element);
             $this->resolveUrls($xpath, $element, $response->getUrl());
 
+            if (in_array($element->tagName, ['img', 'video', 'audio'])) {
+                $this->resolveSrc($element, $response->getUrl());
+
+                return $element->ownerDocument->saveHTML($element);
+            }
+
             $html = '';
 
             foreach ($element->childNodes as $child) {
@@ -128,12 +134,19 @@ class Parser
         }
 
         foreach ($this->select($xpath, '[src]', false, $context) as $element) {
-            $src = $element->getAttribute('src');
-            $element->setAttribute('src', $url->getAbsolute($src));
+            $this->resolveSrc($element, $url);
+        }
+    }
 
-            if ($element->hasAttribute('srcset')) {
-                $element->removeAttribute('srcset');
-            }
+    private function resolveSrc(DOMNode $element, Url $url) {
+        $src = $element->getAttribute('src');
+
+        if ($src) {
+            $element->setAttribute('src', $url->getAbsolute($src));
+        }
+
+        if ($element->hasAttribute('srcset')) {
+            $element->removeAttribute('srcset');
         }
     }
 }

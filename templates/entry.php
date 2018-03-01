@@ -23,7 +23,6 @@
         </p>
     </header>
 
-
     <p class="entry-description">
         <?= $entry->description ?>
     </p>
