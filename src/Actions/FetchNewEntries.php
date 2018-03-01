@@ -28,6 +28,7 @@ class FetchNewEntries
         $feeds = $this->db->feed
             ->select()
             ->where('lastCheckAt < :time', [':time' => (new Datetime('-15 minutes'))->format('Y-m-d H:i:s')])
+            ->orWhere('lastCheckAt IS NULL')
             ->run();
 
         foreach ($feeds as $feed) {
