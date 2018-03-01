@@ -26,10 +26,10 @@ class App extends FolApp
         $container = new Middlewares\Utils\RequestHandlerContainer([$this]);
 
         return Dispatcher::run([
-            new Middlewares\ErrorHandler(),
             new Middlewares\DigestAuthentication([
                 env('JOSE_USERNAME') => env('JOSE_PASSWORD')
             ]),
+            new Middlewares\ErrorHandler(),
             new Middlewares\GzipEncoder(),
             new Middlewares\ContentType(),
             new Middlewares\BasePath($this->getUri()->getPath()),
