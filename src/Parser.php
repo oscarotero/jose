@@ -79,7 +79,7 @@ class Parser
             $this->cleanCode($xpath, $element);
             $this->resolveUrls($xpath, $element, $response->getUrl());
 
-            if (in_array($element->tagName, ['img', 'video', 'audio'])) {
+            if (in_array($element->tagName, ['img', 'video', 'audio', 'ul', 'ol'])) {
                 $this->resolveSrc($element, $response->getUrl());
 
                 return $element->ownerDocument->saveHTML($element);
