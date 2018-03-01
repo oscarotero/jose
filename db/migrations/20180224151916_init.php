@@ -58,6 +58,6 @@ class Init extends AbstractMigration
             ->addIndex(['guid'], ['unique' => true])
             ->addForeignKey('feed_id', 'feed', 'id', ['delete' => 'CASCADE'])
             ->addForeignKey('image_id', 'image', 'id', ['delete' => 'SET_NULL'])
-            ->create();        
+            ->create();
     }
 }

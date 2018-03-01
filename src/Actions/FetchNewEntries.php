@@ -84,7 +84,8 @@ class FetchNewEntries
         }
     }
 
-    private function saveImage(string $url) {
+    private function saveImage(string $url)
+    {
         $image = $this->db->image
             ->select()
             ->one()
