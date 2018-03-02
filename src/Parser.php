@@ -117,7 +117,7 @@ class Parser
             $element->removeAttribute('style');
         }
 
-        foreach ($this->select($xpath, '[aria-hidden],[hidden],meta,style,canvas,svg') as $element) {
+        foreach ($this->select($xpath, '[aria-hidden],[hidden],meta,style,canvas,svg,script,template,.hidden') as $element) {
             $element->parentNode->removeChild($element);
         }
     }
