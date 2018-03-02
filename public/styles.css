@@ -183,8 +183,14 @@ a:hover {
     color: gray;
 }
 .menu a {
-    padding: 1em;
+    padding: .6em;
     color: blue;
+    margin-right: .6em;
+    border-radius: 3px;
+}
+.menu a.is-selected {
+    color: black;
+    background: lightgray;
 }
 .menu em {
     padding: 1em;

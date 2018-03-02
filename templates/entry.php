@@ -19,7 +19,14 @@
             <a href="<?= $entry->feed->url ?>" target="_blank">
                 <?= $entry->feed->title ?>
             </a>
+
             <time><?= $timeago->inWords($entry->publishedAt->format('Y-m-d H:i:s')) ?></time>
+
+            <?php if (!empty($entry->feed->category)): ?>
+            <a href="?category=<?= $entry->feed->category->id ?>">
+                <?= $entry->feed->category->title ?>
+            </a>
+            <?php endif ?>
         </p>
     </header>
 

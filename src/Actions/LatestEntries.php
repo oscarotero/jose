@@ -14,7 +14,7 @@ class LatestEntries
         $this->db = $db;
     }
 
-    public function __invoke(int $page = 1, bool $saved = false): RowCollection
+    public function __invoke(int $page = 1, bool $saved = false, int $category = null): RowCollection
     {
         $query = $this->db->entry
             ->select()
@@ -26,6 +26,10 @@ class LatestEntries
 
         if ($saved) {
             $query->where('entry.isSaved = 1');
+        }
+
+        if ($category) {
+            $query->where('feed.category_id = :category', [':category' => $category]);
         }
 
         return $query->run();

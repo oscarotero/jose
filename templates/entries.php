@@ -6,11 +6,17 @@ $timeago = new Westsworld\TimeAgo();
 <nav class="menu">
     <a href="./" class="menu-logo"><strong>José</strong></a>
 
-    <?php if (empty($saved)): ?>
-    <a href="?saved=1">Show saved</a>
-    <?php else: ?>
-    <a href="./">Restore</a>
-    <?php endif ?>
+    <?php foreach ($categories as $cat): ?>
+        <a href="?category=<?= $cat->id ?>"
+           class="<?= $category && $category === $cat->id ? 'is-selected' : '' ?>">
+           <?= $cat->title ?>
+        </a>
+    <?php endforeach ?>
+
+    <a href="?saved=1" 
+       class="<?= empty($saved) ? '' : 'is-selected' ?>">
+        Saved
+    </a>
 
     <form method="post" class="refresh">
         <button type="submit" class="button">Refresh</button>

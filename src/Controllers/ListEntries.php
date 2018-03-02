@@ -18,19 +18,27 @@ class ListEntries
 
     public function __invoke(ServerRequestInterface $request)
     {
+        $db = $this->app->get('db');
+
         $latestEntries = new LatestEntries(
-            $this->app->get('db'),
+            $db,
             $this->app->get('logger')
         );
 
         $query = $request->getQueryParams();
         $page = (int) ($query['page'] ?? 1);
+        $category = (int) ($query['category'] ?? null);
         $saved = (bool) ($query['saved'] ?? false);
         
+        $entries = $latestEntries($page, $saved, $category);
+        $entries->feed->category;
+
         echo $this->app->get('templates')->render('entries', [
-            'entries' => $latestEntries($page, $saved),
+            'entries' => $entries,
+            'categories' => $db->category->select()->run(),
             'page' => $page,
-            'saved' => $saved
+            'saved' => $saved,
+            'category' => $category
         ]);
     }
 }
