@@ -77,6 +77,15 @@ a:hover {
     border-color: blue;
 }
 
+@media (min-width: 700px) {
+    .entry {
+        padding-left: 120px;
+    }
+    .entry-image {
+        margin-left: -120px;
+    }
+}
+
 /* Entry body */
 .entry-body {
     padding-left: 1em;
@@ -141,6 +150,24 @@ a:hover {
 .entry-body td {
     border-bottom: solid 1px lightgray;
     padding: .6em;
+}
+.entry-body font {
+    font-size: inherit;
+}
+.entry-font h1 {
+    font-size: 1.2rem;
+}
+.entry-font h2 {
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+.entry-font h3 {
+    font-size: 1rem;
+}
+.entry-font h4,
+.entry-font h5,
+.entry-font h6 {
+    font-size: .9rem;
 }
 
 /* Menu */
