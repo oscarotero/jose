@@ -154,19 +154,19 @@ a:hover {
 .entry-body font {
     font-size: inherit;
 }
-.entry-font h1 {
+.entry-body h1 {
     font-size: 1.2rem;
 }
-.entry-font h2 {
+.entry-body h2 {
     font-size: 1.2rem;
     font-weight: normal;
 }
-.entry-font h3 {
+.entry-body h3 {
     font-size: 1rem;
 }
-.entry-font h4,
-.entry-font h5,
-.entry-font h6 {
+.entry-body h4,
+.entry-body h5,
+.entry-body h6 {
     font-size: .9rem;
 }
 
