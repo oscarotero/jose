@@ -103,7 +103,8 @@ a:hover {
     font-size: 1em;
     line-height: 1.4;
 }
-.entry-body img {
+.entry-body img,
+.entry-body video {
     width: auto;
     height: auto;
     max-width: 100%;
