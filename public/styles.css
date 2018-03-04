@@ -170,6 +170,11 @@ a:hover {
 .entry-body h6 {
     font-size: .9rem;
 }
+.entry-body iframe {
+    max-width: 100%;
+    display: block;
+    margin: 1em 0;
+}
 
 /* Menu */
 .menu {
