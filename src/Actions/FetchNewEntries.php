@@ -27,6 +27,7 @@ class FetchNewEntries
     {
         $feeds = $this->db->feed
             ->select()
+            ->where('isEnabled = 1')
             ->run();
 
         foreach ($feeds as $feed) {

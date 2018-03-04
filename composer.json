@@ -29,9 +29,6 @@
             "Jose\\": "src/"
         }
     },
-    "scripts": {
-        "jose:update": "php cli.php"
-    },
     "config": {
         "platform": {
             "php": "7.0.22"
