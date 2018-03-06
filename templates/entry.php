@@ -30,9 +30,11 @@
         </p>
     </header>
 
+    <?php if ($entry->description): ?>
     <p class="entry-description">
         <?= $entry->description ?>
     </p>
+    <?php endif ?>
 
     <?php if (!empty($entry->body)): ?>
     <details class="entry-body">

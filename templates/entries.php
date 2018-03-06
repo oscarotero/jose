@@ -6,22 +6,28 @@ $timeago = new Westsworld\TimeAgo();
 <nav class="menu">
     <a href="./" class="menu-logo"><strong>José</strong></a>
 
-    <?php foreach ($categories as $cat): ?>
-        <a href="?category=<?= $cat->id ?>"
-           class="<?= $category && $category === $cat->id ? 'is-selected' : '' ?>">
-           <?= $cat->title ?>
-        </a>
-    <?php endforeach ?>
+    <ul class="menu-categories">
+        <?php foreach ($categories as $cat): ?>
+        <li>
+            <a href="?category=<?= $cat->id ?>"
+               class="<?= $category && $category === $cat->id ? 'is-selected' : '' ?>">
+               <?= $cat->title ?>
+            </a>
+        </li>
+        <?php endforeach ?>
 
-    <a href="?saved=1" 
-       class="<?= empty($saved) ? '' : 'is-selected' ?>">
-        Saved
-    </a>
-
-    <form method="post" class="refresh">
-        <button type="submit" class="button">Refresh</button>
-    </form>
+        <li>
+            <a href="?saved=1" 
+               class="<?= empty($saved) ? '' : 'is-selected' ?>">
+                Saved
+            </a>
+        </li>
+    </ul>
 </nav>
+
+<form method="post" class="refresh" id="refresh-form">
+    <button type="submit" class="button">Refresh</button>
+</form>
 
 <?php if (count($entries)): ?>
 <ul class="entries">
