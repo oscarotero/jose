@@ -1,26 +1,41 @@
 /* Global */
+:root {
+    --background: white;
+
+    --color-light: aliceblue;
+    --color: blue;
+    --color-dark: midnightblue;
+
+    --gray-dark: #333;
+    --gray: gray;
+    --gray-light: lightgray;
+}
+
 body {
     font-family: -apple-system, system-ui, sans-serif;
     margin: 0 auto 8vh auto;
     width: 90%;
     max-width: 60rem;
     overflow-x: hidden;
+    color: var(--gray-dark);
+    background: var(--background);
 }
+
 a {
     text-decoration: none;
-    color: blue;
+    color: var(--color);
 }
 a:visited {
-    color: midnightblue;
+    color: var(--color-dark);
 }
 a:hover {
     text-decoration: underline;
     text-decoration-skip-ink: auto;
 }
 :focus {
-    outline: dotted blue 1px;
+    outline: dotted var(--color) 1px;
     outline-offset: .3em;
-    background-color: white;
+    background-color: var(--background);
     z-index: 2;
 }
 
@@ -46,7 +61,7 @@ a:hover {
     margin: 0;
 }
 .entry-info time {
-    color: gray;
+    color: var(--gray);
 }
 .entry-info a {
     margin-right: .3em;
@@ -64,17 +79,20 @@ a:hover {
     margin-bottom: 1em;
 }
 .entry-save-button {
-    background: white;
-    color: gray;
-    border: solid 1px lightgray;
+    background: var(--color-light);
+    color: var(--color);
+    border: solid 1px var(--color-light);
     font-size: .8rem;
     padding: .2em .6em;
     border-radius: 2px;
 }
+.entry-save-button:hover {
+    border-color: var(--color);
+}
 .entry-save.is-saved .entry-save-button {
-    background: blue;
-    color: white;
-    border-color: blue;
+    background: var(--color);
+    color: var(--background);
+    border-color: var(--color);
 }
 
 @media (min-width: 700px) {
@@ -100,9 +118,12 @@ a:hover {
     }
 }
 
+.entry-body[open] {
+    margin-bottom: 16vh;
+}
 .entry-body summary {
     cursor: default;
-    color: blue;
+    color: var(--color);
     max-width: 10em;
 }
 .entry-body summary:hover {
@@ -123,20 +144,20 @@ a:hover {
 .entry-body blockquote {
     margin-left: 1em;
     padding-left: 1em;
-    border-left: solid 2px lightgray;
+    border-left: solid 2px var(--gray-light);
 }
 .entry-body hr {
     border: 0;
-    border-top: solid 1px lightgray;
+    border-top: solid 1px var(--gray-light);
 }
 .entry-body pre {
-    background-color: aliceblue;
+    background-color: var(--color-light);
     padding: 1em;
     overflow-x: auto;
     border-radius: 2px;
 }
 .entry-body code {
-    background-color: aliceblue;
+    background-color: var(--color-light);
     padding: .3em;
     border-radius: 2px;
 }
@@ -158,7 +179,7 @@ a:hover {
     padding: .3em .6em;
 }
 .entry-body td {
-    border-bottom: solid 1px lightgray;
+    border-bottom: solid 1px var(--gray-light);
     padding: .6em;
 }
 .entry-body font {
@@ -194,17 +215,17 @@ a:hover {
     padding: 1rem 0;
     margin-bottom: 8vh;
     align-items: baseline;
-    color: gray;
+    color: var(--gray);
 }
 .menu a {
     padding: .6em;
-    color: blue;
+    color: var(--color);
     margin-right: .6em;
     border-radius: 3px;
 }
 .menu a.is-selected {
     color: black;
-    background: lightgray;
+    background: var(--gray-light);
 }
 .menu .menu-logo {
     margin-right: auto;
@@ -224,8 +245,8 @@ a:hover {
     text-align: center;
 }
 .button {
-    background: blue;
-    color: white;
+    background: var(--color);
+    color: var(--background);
     border: none;
     font-size: 1rem;
     font-weight: bold;
@@ -235,13 +256,13 @@ a:hover {
     transition: background-color .2s;
 }
 .button:visited {
-    color: white;
+    color: var(--background);
 }
 .button:hover {
-    background-color: midnightblue;
+    background-color: var(--color-dark);
 }
 .button:disabled {
-    background-color: lightgray;
+    background-color: var(--gray-light);
     box-shadow: none;
 }
 

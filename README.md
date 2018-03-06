@@ -11,6 +11,7 @@
 
 - Mysql
 - Php 7
+- Un navegador moderno (Non IE)
 
 ## Instalación
 
