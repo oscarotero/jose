@@ -222,6 +222,7 @@ a:hover {
     color: var(--color);
     margin-right: .6em;
     border-radius: 3px;
+    display: block;
 }
 .menu a.is-selected {
     color: black;
