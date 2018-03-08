@@ -50,10 +50,18 @@ a:hover {
 }
 
 /* Entry */
+.entry {
+    min-height: 100px;
+}
 .entry-header h1 {
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1.3;
     margin: 0;
+}
+@media (min-width: 420px) {
+    .entry-header h1 {
+        font-size: 1.2rem;
+    }
 }
 .entry-info {
     font-size: .8rem;
@@ -62,9 +70,11 @@ a:hover {
 }
 .entry-info time {
     color: var(--gray);
+    display: inline-block;
 }
 .entry-info a {
     margin-right: .3em;
+    display: inline-block;
 }
 .entry-description {
     line-height: 1.4;
