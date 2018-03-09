@@ -40,7 +40,13 @@ $timeago = new Westsworld\TimeAgo();
 
 <nav class="pagination">
 	<?php if (count($entries) === 50): ?>
-	<a href="?page=<?= $page + 1 ?>" class="button">Next page (<?= $page + 1 ?>)</a>
+	<a href="?<?php
+        echo http_build_query([
+            'page' => $page + 1,
+            'category' => $category,
+            'saved' => $saved
+        ]);
+    ?>" class="button">Next page (<?= $page + 1 ?>)</a>
 	<?php endif ?>
 </nav>
 
