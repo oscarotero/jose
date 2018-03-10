@@ -12,14 +12,43 @@ document.body.addEventListener('toggle', e => {
 document.body.addEventListener('submit', e => {
     if (e.target.matches('form.entry-save')) {
         e.preventDefault();
+        const btn = e.target.querySelector('button');
 
-        fetch(e.target.action, {
-            method: "POST",
+        return fetch(e.target.action, {
+            method: 'POST',
             body: new FormData(e.target),
             credentials: 'same-origin'
         })
         .then(response => response.text())
-        .then(text => e.target.classList.toggle('is-saved', text == 1));
+        .then(text => {
+            if (text == 1) {
+                btn.classList.add('is-active');
+                btn.innerText = 'Unsave';
+            } else {
+                btn.classList.remove('is-active');
+                btn.innerText = 'Save';
+            }
+        });
+    }
+
+    if (e.target.matches('form.entry-hide')) {
+        e.preventDefault();
+        const li = e.target.closest('.entries > li');
+        li.hidden = true;
+
+        return fetch(e.target.action, {
+            method: 'POST',
+            body: new FormData(e.target),
+            credentials: 'same-origin'
+        })
+        .then(response => response.text())
+        .then(text => {
+            if (text == 1) {
+                li.remove();
+            } else {
+                li.hidden = false;
+            }
+        });
     }
 }, true);
 

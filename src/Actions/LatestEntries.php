@@ -14,13 +14,14 @@ class LatestEntries
         $this->db = $db;
     }
 
-    public function __invoke(int $page = 1, bool $saved = false, int $category = null): RowCollection
+    public function __invoke(int $page = 1, bool $saved = false, int $category = null, int $feed = null): RowCollection
     {
         $query = $this->db->entry
             ->select()
             ->leftJoin('feed')
             ->leftJoin('image')
             ->where('feed.isEnabled = 1')
+            ->where('entry.isHidden = 0')
             ->page($page, 50)
             ->orderBy('publishedAt', 'DESC');
 
@@ -30,6 +31,10 @@ class LatestEntries
 
         if ($category) {
             $query->where('feed.category_id = :category', [':category' => $category]);
+        }
+
+        if ($feed) {
+            $query->where('feed.id = :feed', [':feed' => $feed]);
         }
 
         return $query->run();

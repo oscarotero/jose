@@ -83,12 +83,14 @@ a:hover {
     float: left;
     margin: 0 1em .5em 0;
 }
-.entry-save {
+.entry-actions {
     float: right;
-    margin-left: 1em;
-    margin-bottom: 1em;
+    display: flex;
 }
-.entry-save-button {
+.entry-actions form {
+    margin: 0 0 1em 1em;
+}
+.entry-button {
     background: var(--color-light);
     color: var(--color);
     border: solid 1px var(--color-light);
@@ -96,10 +98,10 @@ a:hover {
     padding: .2em .6em;
     border-radius: 2px;
 }
-.entry-save-button:hover {
+.entry-button:hover {
     border-color: var(--color);
 }
-.entry-save.is-saved .entry-save-button {
+.entry-button.is-active {
     background: var(--color);
     color: var(--background);
     border-color: var(--color);

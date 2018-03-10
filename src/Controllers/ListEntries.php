@@ -2,20 +2,12 @@
 
 namespace Jose\Controllers;
 
-use Jose\App;
 use Jose\Actions\LatestEntries;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class ListEntries
+class ListEntries extends Controller
 {
-    private $app;
-
-    public function __construct(App $app)
-    {
-        $this->app = $app;
-    }
-
     public function __invoke(ServerRequestInterface $request)
     {
         $db = $this->app->get('db');
@@ -27,10 +19,11 @@ class ListEntries
 
         $query = $request->getQueryParams();
         $page = (int) ($query['page'] ?? 1);
-        $category = (int) ($query['category'] ?? null);
+        $category = isset($query['category']) ? (int) $query['category'] : null;
+        $feed = isset($query['feed']) ? (int) $query['feed'] : null;
         $saved = (bool) ($query['saved'] ?? false);
         
-        $entries = $latestEntries($page, $saved, $category);
+        $entries = $latestEntries($page, $saved, $category, $feed);
         $entries->feed->category;
 
         echo $this->app->get('templates')->render('entries', [
@@ -38,7 +31,8 @@ class ListEntries
             'categories' => $db->category->select()->run(),
             'page' => $page,
             'saved' => $saved,
-            'category' => $category
+            'category' => $category,
+            'feed' => $feed
         ]);
     }
 }

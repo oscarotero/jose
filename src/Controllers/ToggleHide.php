@@ -2,22 +2,22 @@
 
 namespace Jose\Controllers;
 
-use Jose\Actions\ToggleSave as ToggleSaveAction;
+use Jose\Actions\ToggleHide as ToggleHideAction;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Middlewares\Utils\Factory;
 
-class ToggleSave extends Controller
+class ToggleHide extends Controller
 {
     public function __invoke(ServerRequestInterface $request)
     {
-        $toggleSave = new ToggleSaveAction(
+        $toggleHide = new ToggleHideAction(
             $this->app->get('db'),
             $this->app->get('logger')
         );
 
         $data = $request->getParsedBody();
 
-        echo $toggleSave($data['id']);
+        echo $toggleHide($data['id']);
     }
 }

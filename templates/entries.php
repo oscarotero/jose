@@ -44,7 +44,8 @@ $timeago = new Westsworld\TimeAgo();
         echo http_build_query([
             'page' => $page + 1,
             'category' => $category,
-            'saved' => $saved
+            'saved' => $saved,
+            'feed' => $feed
         ]);
     ?>" class="button">Next page (<?= $page + 1 ?>)</a>
 	<?php endif ?>

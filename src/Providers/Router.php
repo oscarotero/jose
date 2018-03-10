@@ -18,6 +18,7 @@ class Router implements ServiceProviderInterface
                     $r->addRoute('GET', '/', Controllers\ListEntries::class);
                     $r->addRoute('POST', '/', Controllers\UpdateEntries::class);
                     $r->addRoute('POST', '/save', Controllers\ToggleSave::class);
+                    $r->addRoute('POST', '/hide', Controllers\ToggleHide::class);
                 });
             },
         ];

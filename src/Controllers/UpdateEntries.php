@@ -2,21 +2,13 @@
 
 namespace Jose\Controllers;
 
-use Jose\App;
 use Jose\Actions\FetchNewEntries;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Middlewares\Utils\Factory;
 
-class UpdateEntries
+class UpdateEntries extends Controller
 {
-    private $app;
-
-    public function __construct(App $app)
-    {
-        $this->app = $app;
-    }
-
     public function __invoke(ServerRequestInterface $request)
     {
         $newEntries = new FetchNewEntries(

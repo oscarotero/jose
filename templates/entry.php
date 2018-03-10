@@ -1,8 +1,19 @@
 <article class="entry">
-    <form action="?path=/save" method="post" class="entry-save<?= $entry->isSaved ? ' is-saved' : '' ?>">
-        <input type="hidden" name="id" value="<?= $entry->id ?>">
-        <button type="submit" class="entry-save-button">Save</button>
-    </form>
+    <div class="entry-actions">
+        <form action="?path=/save" method="post" class="entry-save">
+            <input type="hidden" name="id" value="<?= $entry->id ?>">
+            <button type="submit" class="entry-button<?= $entry->isSaved ? ' is-active' : '' ?>">
+                <?= $entry->isSaved ? 'Unsave' : 'Save' ?>
+            </button>
+        </form>
+
+        <form action="?path=/hide" method="post" class="entry-hide">
+            <input type="hidden" name="id" value="<?= $entry->id ?>">
+            <button type="submit" class="entry-button">
+                <?= $entry->isHidden ? 'Show' : 'Hide' ?>
+            </button>
+        </form>
+    </div>
 
     <?php if (!empty($entry->image)): ?>
     <img src="<?= $entry->image->data ?>" class="entry-image" width="100" height="100">
@@ -16,7 +27,7 @@
         </h1>
 
         <p class="entry-info">
-            <a href="<?= $entry->feed->url ?>" target="_blank">
+            <a href="?feed=<?= $entry->feed->id ?>">
                 <?= $entry->feed->title ?>
             </a>
 
