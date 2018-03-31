@@ -23,7 +23,7 @@ class LatestEntries
             ->where('feed.isEnabled = 1')
             ->where('entry.isHidden = 0')
             ->page($page, 50)
-            ->orderBy('publishedAt', 'DESC');
+            ->orderBy('id', 'DESC');
 
         if ($saved) {
             $query->where('entry.isSaved = 1');
