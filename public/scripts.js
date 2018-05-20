@@ -6,6 +6,10 @@ document.body.addEventListener('toggle', e => {
             const body = document.importNode(template.content, true);
             template.replaceWith(body);
         }
+
+        if (!e.target.open) {
+            e.target.parentElement.scrollIntoView();
+        }
     }
 }, true);
 

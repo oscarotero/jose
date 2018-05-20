@@ -6,7 +6,7 @@
     <title>José</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="top">
     <?= $this->section('content') ?>
     <script src="scripts.js"></script>
 </body>

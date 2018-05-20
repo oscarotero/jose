@@ -33,5 +33,8 @@
         "platform": {
             "php": "7.0.22"
         }
+    },
+    "scripts": {
+        "start": "php -S localhost:8888 -t public public/index.php"
     }
 }

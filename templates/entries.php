@@ -49,6 +49,8 @@ $timeago = new Westsworld\TimeAgo();
         ]);
     ?>" class="button">Next page (<?= $page + 1 ?>)</a>
 	<?php endif ?>
+
+    <a href="#top" class="float-button">Top</a>
 </nav>
 
 <?php else: ?>
