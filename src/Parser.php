@@ -150,7 +150,8 @@ class Parser
         }
     }
 
-    private function resolveSrc(DOMNode $element, Url $url) {
+    private function resolveSrc(DOMNode $element, Url $url)
+    {
         $src = $element->getAttribute('src');
 
         if ($src) {
