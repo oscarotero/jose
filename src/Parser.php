@@ -41,6 +41,15 @@ class Parser
     {
         $embed = Embed::create($item->get_link());
 
+        $db = $feed->getTable()->getDatabase();
+        $url = $embed->getResponse()->getUrl()->getAbsolute('/');
+
+        $scrapper = $db->scrapper
+                        ->select()
+                        ->one()
+                        ->where('url LIKE :url', [':url' => '%'.$url])
+                        ->run();
+
         return [
             'guid' => $item->get_id(),
             'url' => $embed->url,
@@ -48,13 +57,16 @@ class Parser
             'description' => $embed->description,
             'publishedAt' => $item->get_date('Y-m-d H:i:s') ?? $embed->publishedDate,
             'image' => $embed->image,
-            'body' => $this->extractBody($feed, $embed->getResponse()) ?: $embed->code ?: $item->get_content(true)
+            'body' => $this->extractBody($embed->getResponse(), $scrapper) ?: $embed->code ?: $item->get_content(true)
         ];
     }
 
-    private function extractBody(Row $feed, Response $response)
+    private function extractBody(Response $response, Row $scrapper = null)
     {
-        $contentSelector = $feed->contentSelector;
+        if (!$scrapper) {
+            return;
+        }
+        $contentSelector = $scrapper->contentSelector;
         $document = $response->getHtmlContent();
 
         if (!$contentSelector || !$document) {
@@ -64,8 +76,8 @@ class Parser
         $xpath = new DOMXPath($document);
 
         //Remove ignored
-        if ($feed->ignoredSelector) {
-            $elements = $this->select($xpath, $feed->ignoredSelector);
+        if ($scrapper->ignoredSelector) {
+            $elements = $this->select($xpath, $scrapper->ignoredSelector);
 
             foreach ($elements as $element) {
                 $element->parentNode->removeChild($element);
