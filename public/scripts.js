@@ -71,7 +71,7 @@ document.getElementById('refresh-form').addEventListener('submit', e => {
         btn.innerText = 'OK!';
 
         setTimeout(() => {
-            document.location = document.location;
+            document.location = document.location.pathname;
         }, 1000)
     });
 });
