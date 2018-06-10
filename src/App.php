@@ -26,6 +26,9 @@ class App extends FolApp
         $container = new Middlewares\Utils\RequestHandlerContainer([$this]);
 
         return Dispatcher::run([
+            new Middlewares\JsonPayload(),
+            (new Middlewares\ReportingLogger($this->get('logger')))
+                ->message('JS Error'),
             new Middlewares\DigestAuthentication([
                 env('JOSE_USERNAME') => env('JOSE_PASSWORD')
             ]),

@@ -1,3 +1,9 @@
+window.onerror = function (message, file, lineNo, colNo) {
+    const error = { message, file, lineNo, colNo };
+    const blob = new Blob([JSON.stringify(error)], { type: 'application/json' });
+    navigator.sendBeacon('/report', blob);
+};
+
 document.body.addEventListener('toggle', e => {
     if (e.target.tagName === 'DETAILS') {
         const template = e.target.querySelector('template');
