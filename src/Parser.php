@@ -47,7 +47,7 @@ class Parser
         $scrapper = $db->scrapper
                         ->select()
                         ->one()
-                        ->where('url LIKE :url', [':url' => '%'.$url])
+                        ->where('url LIKE :url', [':url' => "%{$url}%"])
                         ->run();
 
         return [
