@@ -8,6 +8,7 @@ use Embed\Embed;
 use Embed\Http\Response;
 use Embed\Http\Url;
 use SimpleCrud\Row;
+use SimpleCrud\Table;
 use Symfony\Component\CssSelector\CssSelectorConverter;
 use DOMDocument;
 use DOMXPath;
@@ -39,25 +40,49 @@ class Parser
 
     public function parseEntry(SimplePie_Item $item, Row $feed): array
     {
-        $embed = Embed::create($item->get_link());
-
         $db = $feed->getTable()->getDatabase();
+
+        $data = $this->runScrapper($item->get_link(), $db->scrapper);
+        $data['guid'] = $item->get_id();
+        $data['publishedAt'] = $item->get_date('Y-m-d H:i:s') ?: $data['publishedAt'];
+
+        if (empty($data['body'])) {
+            $data['body'] = $item->get_content(true);
+        }
+
+        return $data;
+    }
+
+    public function runScrapper(string $url, Table $scrappers, $redirect = true)
+    {
+        $embed = Embed::create($url);
+
         $url = $embed->getResponse()->getUrl()->getAbsolute('/');
 
-        $scrapper = $db->scrapper
-                        ->select()
+        $scrapper = $scrappers->select()
                         ->one()
                         ->where('url LIKE :url', [':url' => "%{$url}%"])
                         ->run();
 
+        $body = $this->extractBody($embed->getResponse(), $scrapper) ?: $embed->code;
+
+        if (filter_var($body, FILTER_VALIDATE_URL)) {
+            if ($redirect) {
+                return $this->runScrapper($body, $scrappers, false);
+            }
+
+            var_dump($url);
+
+            die();
+        }
+
         return [
-            'guid' => $item->get_id(),
             'url' => $embed->url,
             'title' => $embed->title,
             'description' => $embed->description,
-            'publishedAt' => $item->get_date('Y-m-d H:i:s') ?? $embed->publishedDate,
+            'publishedAt' => $embed->publishedDate,
             'image' => $embed->image,
-            'body' => $this->extractBody($embed->getResponse(), $scrapper) ?: $embed->code ?: $item->get_content(true)
+            'body' => $body
         ];
     }
 
@@ -95,6 +120,10 @@ class Parser
                 $this->resolveSrc($element, $response->getUrl());
 
                 return $element->ownerDocument->saveHTML($element);
+            }
+
+            if ($element->tagName === 'a') {
+                return $element->getAttribute('href');
             }
 
             $html = '';
