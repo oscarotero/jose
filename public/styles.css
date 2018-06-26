@@ -293,11 +293,15 @@ a:hover {
     background-color: var(--gray-light);
     box-shadow: none;
 }
-.float-button,
-.float-button:visited {
+.float-button {
     position: fixed;
     bottom: 1em;
     right: 1em;
+    padding: 1em;
+    z-index: 2;
+    text-decoration: none;
+}
+.float-button em {
     background: var(--color);
     color: var(--background);
     width: 4em;
@@ -310,8 +314,10 @@ a:hover {
     box-shadow: 0 2px 3px -1px rgba(0,0,0,0.3);
 }
 .float-button:hover {
-    background-color: var(--color-dark);
     text-decoration: none;
+}
+.float-button:hover em {
+    background-color: var(--color-dark);
 }
 
 /* empty state */
@@ -320,8 +326,4 @@ a:hover {
     font-size: 2rem;
     color: lightgray;
     padding: 20vh 0;
-}
-
-.pagination {
-    margin-top: 
 }

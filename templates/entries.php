@@ -38,8 +38,8 @@ $timeago = new Westsworld\TimeAgo();
     <?php endforeach ?>
 </ul>
 
+<?php if (count($entries) === 50): ?>
 <nav class="pagination">
-	<?php if (count($entries) === 50): ?>
 	<a href="?<?php
         echo http_build_query([
             'page' => $page + 1,
@@ -48,10 +48,12 @@ $timeago = new Westsworld\TimeAgo();
             'feed' => $feed
         ]);
     ?>" class="button">Next page (<?= $page + 1 ?>)</a>
-	<?php endif ?>
-
-    <a href="#top" class="float-button">Top</a>
 </nav>
+<?php endif ?>
+
+<a href="#top" class="float-button">
+    <em>Top</em>
+</a>
 
 <?php else: ?>
 <p class="emptyState">

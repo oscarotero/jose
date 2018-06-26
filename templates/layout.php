@@ -8,6 +8,6 @@
 </head>
 <body id="top">
     <?= $this->section('content') ?>
-    <script src="scripts.js"></script>
+    <script src="scripts.js" type="module"></script>
 </body>
 </html>
