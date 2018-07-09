@@ -23,6 +23,11 @@ $timeago = new Westsworld\TimeAgo();
             </a>
         </li>
     </ul>
+
+    <form class="menu-search">
+        <input type="search" name="q" placeholder="Search in title">
+        <button type="submit" class="button">Search</button>
+    </form>
 </nav>
 
 <form method="post" class="refresh" id="refresh-form">

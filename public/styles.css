@@ -268,6 +268,27 @@ a:hover {
     overflow-x: auto;
     padding: 0;
 }
+.menu-search {
+    display: flex;
+    align-items: center;
+}
+@media (max-width: 1000px) {
+    .menu-search {
+        display: none;
+    }
+}
+.menu-search input {
+    font-size: inherit;
+    font-family: inherit;
+    padding: .5em;
+    background: white;
+    border: solid 1px;
+    margin-right: 3px;
+    flex: 1 1 auto;
+}
+.menu-search input:focus {
+    border-color: var(--color);
+}
 .refresh {
     margin-bottom: 8vh;
     text-align: center;

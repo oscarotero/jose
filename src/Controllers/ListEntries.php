@@ -22,8 +22,9 @@ class ListEntries extends Controller
         $category = isset($query['category']) ? (int) $query['category'] : null;
         $feed = isset($query['feed']) ? (int) $query['feed'] : null;
         $saved = (bool) ($query['saved'] ?? false);
-        
-        $entries = $latestEntries($page, $saved, $category, $feed);
+        $search = $query['q'] ?? null;
+
+        $entries = $latestEntries($page, $saved, $category, $feed, $search);
         $entries->feed->category;
 
         echo $this->app->get('templates')->render('entries', [

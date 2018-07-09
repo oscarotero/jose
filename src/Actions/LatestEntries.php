@@ -14,7 +14,7 @@ class LatestEntries
         $this->db = $db;
     }
 
-    public function __invoke(int $page = 1, bool $saved = false, int $category = null, int $feed = null): RowCollection
+    public function __invoke(int $page = 1, bool $saved = false, int $category = null, int $feed = null, string $search = null): RowCollection
     {
         $query = $this->db->entry
             ->select()
@@ -35,6 +35,10 @@ class LatestEntries
 
         if ($feed) {
             $query->where('feed.id = :feed', [':feed' => $feed]);
+        }
+
+        if ($search) {
+            $query->where('entry.title LIKE :search', [':search' => "%{$search}%"]);
         }
 
         return $query->run();
