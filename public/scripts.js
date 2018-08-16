@@ -6,11 +6,12 @@ window.onerror = function (message, file, lineNo, colNo) {
 
 document.body.addEventListener('toggle', e => {
     if (e.target.tagName === 'DETAILS') {
-        const template = e.target.querySelector('template');
+        const noscript = e.target.querySelector('noscript');
 
-        if (template) {
-            const body = document.importNode(template.content, true);
-            template.replaceWith(body);
+        if (noscript) {
+            const div = document.createElement('div');
+            div.innerHTML = noscript.innerText;
+            noscript.replaceWith(div);
         }
 
         if (!e.target.open) {
