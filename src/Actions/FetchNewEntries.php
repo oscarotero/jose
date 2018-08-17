@@ -56,16 +56,16 @@ class FetchNewEntries
                 ->run();
 
             if (!$exists) {
-                $data = $this->parser->parseEntry($item, $feed);
-                $data['feed_id'] = $feed->id;
-
-                if ($data['image']) {
-                    $data['image_id'] = $this->saveImage($data['image']);
-                }
-
-                unset($data['image']);
-
                 try {
+                    $data = $this->parser->parseEntry($item, $feed);
+                    $data['feed_id'] = $feed->id;
+
+                    if ($data['image']) {
+                        $data['image_id'] = $this->saveImage($data['image']);
+                    }
+
+                    unset($data['image']);
+
                     $this->db->entry
                         ->insert()
                         ->duplications()
