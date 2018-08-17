@@ -78,7 +78,7 @@ class FetchNewEntries
 
                     $this->logger->error($e->getMessage(), [
                         'exception' => $e,
-                        'data' => $data
+                        'data' => $data ?? null
                     ]);
                 }
             }
