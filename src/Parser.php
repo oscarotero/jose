@@ -86,16 +86,16 @@ class Parser
         ];
     }
 
-    private function extractBody(Response $response, Row $scrapper = null)
+    private function extractBody(Response $response, Row $scrapper = null): ?string
     {
         if (!$scrapper) {
-            return;
+            return null;
         }
         $contentSelector = $scrapper->contentSelector;
         $document = $response->getHtmlContent();
 
         if (!$contentSelector || !$document) {
-            return;
+            return null;
         }
 
         $xpath = new DOMXPath($document);
@@ -110,62 +110,58 @@ class Parser
         }
         
         //Get content
-        $element = $this->select($xpath, $contentSelector, true);
+        $content = array_map(
+            function ($element) use ($xpath, $response) {
+                $this->cleanCode($xpath, $element);
+                $this->resolveUrls($xpath, $element, $response->getUrl());
+        
+                if (in_array($element->tagName, ['img', 'video', 'audio', 'ul', 'ol'])) {
+                    $this->resolveSrc($element, $response->getUrl());
+        
+                    return $element->ownerDocument->saveHTML($element);
+                }
+        
+                if ($element->tagName === 'a') {
+                    return $element->getAttribute('href');
+                }
+        
+                $html = '';
+        
+                foreach ($element->childNodes as $child) {
+                    $html .= $child->ownerDocument->saveHTML($child);
+                }
+        
+                return trim($html);
+            },
+            $this->select($xpath, $contentSelector)
+        );
 
-        if ($element) {
-            $this->cleanCode($xpath, $element);
-            $this->resolveUrls($xpath, $element, $response->getUrl());
-
-            if (in_array($element->tagName, ['img', 'video', 'audio', 'ul', 'ol'])) {
-                $this->resolveSrc($element, $response->getUrl());
-
-                return $element->ownerDocument->saveHTML($element);
-            }
-
-            if ($element->tagName === 'a') {
-                return $element->getAttribute('href');
-            }
-
-            $html = '';
-
-            foreach ($element->childNodes as $child) {
-                $html .= $child->ownerDocument->saveHTML($child);
-            }
-
-            return trim($html);
-        }
+        return implode('', $content) ?: null;
     }
 
-    /**
-     * @return DOMElement|array|null
-     */
-    private function select(DOMXPath $xpath, string $selector, bool $returnFirst = false, DOMNode $context = null)
+    private function select(DOMXPath $xpath, string $selector, DOMNode $context = null): array
     {
         $entries = $xpath->query($this->converter->toXpath($selector), $context);
 
-        if ($entries->length) {
-            return $returnFirst ? $entries->item(0) : iterator_to_array($entries, false);
-        }
-
-        return $returnFirst ? null : [];
+        return $entries->length ? iterator_to_array($entries, false) : [];
     }
 
     private function cleanCode(DOMXPath $xpath, DOMNode $context)
     {
-        foreach ($this->select($xpath, '[class],[id],[style]', false, $context) as $element) {
+        foreach ($this->select($xpath, '[class],[id],[style]', $context) as $element) {
             $element->removeAttribute('class');
             $element->removeAttribute('id');
             $element->removeAttribute('style');
         }
 
-        foreach ($this->select($xpath, '[aria-hidden],[hidden],meta,style,canvas,svg,script,template,.hidden') as $element) {
+        foreach ($this->select($xpath, '[aria-hidden],[hidden],meta,style,canvas,svg,form,script,template,.hidden') as $element) {
             $element->parentNode->removeChild($element);
         }
     }
 
     private function resolveUrls(DOMXPath $xpath, DOMNode $context, Url $url)
     {
-        foreach ($this->select($xpath, '[href]', false, $context) as $element) {
+        foreach ($this->select($xpath, '[href]', $context) as $element) {
             $href = $element->getAttribute('href');
             $element->setAttribute('href', $url->getAbsolute($href));
 
@@ -174,7 +170,7 @@ class Parser
             }
         }
 
-        foreach ($this->select($xpath, '[src]', false, $context) as $element) {
+        foreach ($this->select($xpath, '[src]', $context) as $element) {
             $this->resolveSrc($element, $url);
         }
     }
