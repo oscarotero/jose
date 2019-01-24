@@ -71,8 +71,6 @@ class Parser
                 return $this->runScrapper($body, $scrappers, false);
             }
 
-            var_dump($url);
-
             die();
         }
 

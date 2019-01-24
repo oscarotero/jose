@@ -71,10 +71,10 @@ class App extends FolApp
             }
         }
 
-        $updateScrapper = new Actions\UpdateScrapper($db, $logger);
         $newEntries = new Actions\FetchNewEntries($db, $logger);
-
-        $updateScrapper(Yaml::parseFile($this->getPath('scrapper.yaml')));
         $newEntries();
+        
+        // $updateScrapper = new Actions\UpdateScrapper($db, $logger);
+        // $updateScrapper(Yaml::parseFile($this->getPath('scrapper.yaml')));
     }
 }

@@ -7,7 +7,7 @@
         "middlewares/utils": "^1.0",
         "middlewares/negotiation": "^1.0",
         "embed/embed": "^3.3",
-        "simple-crud/simple-crud": "^6.12",
+        "simple-crud/simple-crud": "^6.13",
         "robmorgan/phinx": "^0.10.0",
         "league/plates": "^3.3",
         "middlewares/fast-route": "^1.0",
@@ -39,6 +39,7 @@
     },
     "scripts": {
         "start": "php -S localhost:8888 -t public public/index.php",
-        "database": "phinx migrate"
+        "database": "phinx migrate",
+        "fetch": "php update.php"
     }
 }

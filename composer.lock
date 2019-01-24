@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3bd55f6bd305efbe26647352f390d60a",
+    "content-hash": "9ad4a38dc9f66b0bcc6a7de1102a5949",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -1954,16 +1954,16 @@
         },
         {
             "name": "simple-crud/simple-crud",
-            "version": "v6.12.1",
+            "version": "v6.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/simple-crud.git",
-                "reference": "2ba6ce5cf55c3f6c4f238186ec43b20875fcf22a"
+                "reference": "d65f51c76c0f7f383399fa5460a67265212bc9ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/simple-crud/zipball/2ba6ce5cf55c3f6c4f238186ec43b20875fcf22a",
-                "reference": "2ba6ce5cf55c3f6c4f238186ec43b20875fcf22a",
+                "url": "https://api.github.com/repos/oscarotero/simple-crud/zipball/d65f51c76c0f7f383399fa5460a67265212bc9ac",
+                "reference": "d65f51c76c0f7f383399fa5460a67265212bc9ac",
                 "shasum": ""
             },
             "require": {
@@ -1998,7 +1998,7 @@
                 "mysql",
                 "sqlite"
             ],
-            "time": "2018-03-08T14:53:55+00:00"
+            "time": "2019-01-24T16:32:31+00:00"
         },
         {
             "name": "simplepie/simplepie",

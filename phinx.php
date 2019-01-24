@@ -12,8 +12,7 @@ $app = new Jose\App();
 
 return [
     'paths' => [
-        'migrations' => __DIR__.'/db/migrations',
-        'seeds' => __DIR__.'/db/seeds',
+        'migrations' => __DIR__.'/db/migrations'
     ],
 
     'environments' => [
