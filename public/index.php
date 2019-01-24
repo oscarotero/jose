@@ -11,17 +11,11 @@ ini_set('log_errors', 1);
 ini_set('error_log', __DIR__.'/data/php');
 ini_set('expose_php', 0);
 
-//Init composer
-include dirname(__DIR__).'/vendor/autoload.php';
+include dirname(__DIR__).'/bootstrap.php';
 
 if (php_sapi_name() === 'cli-server' && Server::run(__DIR__)) {
     return false;
 }
-
-//Init .env variables
-(new Dotenv\Dotenv(dirname(__DIR__)))->load();
-
-Env::init();
 
 //Execute the app
 $app = new Jose\App();

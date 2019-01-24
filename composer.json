@@ -17,24 +17,19 @@
         "monolog/monolog": "^1.23",
         "symfony/yaml": "^3.0|^4.0",
         "middlewares/base-path": "^1.0",
-        "vlucas/phpdotenv": "^2.4",
+        "vlucas/phpdotenv": "^3.0",
         "oscarotero/env": "^1.1",
-        "jimmiw/php-time-ago": "^2.0",
+        "jimmiw/php-time-ago": "^3.0",
         "imagecow/imagecow": "^2.3",
         "middlewares/encoder": "^1.0",
         "middlewares/http-authentication": "^1.0",
         "middlewares/reporting-logger": "^1.0",
         "middlewares/payload": "^1.0",
-        "fly-crud/fly-crud": "^2.0"
+        "fly-crud/fly-crud": "^3.0"
     },
     "autoload": {
         "psr-4": {
             "Jose\\": "src/"
-        }
-    },
-    "config": {
-        "platform": {
-            "php": "7.0.22"
         }
     },
     "scripts": {

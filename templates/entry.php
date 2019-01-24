@@ -31,7 +31,7 @@
                 <?= $entry->feed->title ?>
             </a>
 
-            <time><?= $timeago->inWords($entry->publishedAt->format('Y-m-d H:i:s')) ?></time>
+            <time><?= $timeago->inWords($entry->publishedAt) ?></time>
 
             <?php if (!empty($entry->feed->category)): ?>
             <a href="?category=<?= $entry->feed->category->id ?>">
