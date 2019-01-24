@@ -18,13 +18,13 @@
 - Clonar o repositorio
 - Descargar dependencias con `composer install`
 - Copiar o arquivo `.env.example` para `.env` e editar os datos de conexión de base de datos e de login
-- Para actualizar a base de datos, executar `php vendor/bin/phinx migrate`
+- Para actualizar a base de datos, executar `composer database`
 - O servidor debe apuntar ao directorio `/public`.
 
 ## Actualización
 
 - Simplemente actualizar o git `git pull`
-- Se é necesario actualizar a base de datos, executar `php vendor/bin/phinx migrate`
+- Se é necesario actualizar a base de datos, executar `composer database`
 
 ## Como meter suscripcións
 

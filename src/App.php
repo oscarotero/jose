@@ -8,6 +8,7 @@ use Middlewares\Utils\Factory;
 use Middlewares\Utils\Dispatcher;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\Yaml\Yaml;
 
 class App extends FolApp
 {
@@ -49,5 +50,31 @@ class App extends FolApp
             new Middlewares\FastRoute($this->get('router')),
             new Middlewares\RequestHandler($container),
         ], $request);
+    }
+
+    public function update()
+    {
+        $db = $this->get('db');
+        $logger = $this->get('logger');
+        
+        $updateFeeds = new Actions\UpdateFeeds($db, $logger);
+        
+        foreach ($this->get('subscriptions')->getAllDirectories() as $directory) {
+            foreach ($directory->getAllDocuments() as $id => $document) {
+                $category = $db->category->select()->one()->by('title', $id)->run();
+    
+                if (!$category) {
+                    $category = $db->category->create(['title' => $id])->save();
+                }
+
+                $updateFeeds($document, $category);
+            }
+        }
+
+        $updateScrapper = new Actions\UpdateScrapper($db, $logger);
+        $newEntries = new Actions\FetchNewEntries($db, $logger);
+
+        $updateScrapper(Yaml::parseFile($this->getPath('scrapper.yaml')));
+        $newEntries();
     }
 }

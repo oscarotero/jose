@@ -4,7 +4,9 @@ namespace Jose\Actions;
 
 use SimpleCrud\SimpleCrud;
 use SimpleCrud\RowCollection;
+use SimpleCrud\Row;
 use Psr\Log\LoggerInterface;
+use FlyCrud\Document;
 use Throwable;
 
 class UpdateFeeds
@@ -18,14 +20,14 @@ class UpdateFeeds
         $this->logger = $logger;
     }
 
-    public function __invoke(array $data)
+    public function __invoke(Document $document, Row $category)
     {
-        foreach ($data as $feed) {
-            $this->updateFeed($feed);
+        foreach ($document as $feed) {
+            $this->updateFeed((array) $feed, $category);
         }
     }
 
-    private function updateFeed(array $data)
+    private function updateFeed(array $data, Row $category)
     {
         $feed = $this->db->feed
                 ->select()
@@ -34,14 +36,13 @@ class UpdateFeeds
                 ->run();
 
         if ($feed) {
-            return $feed->edit($data)->save();
+            return $feed->edit($data)->relate($category)->save();
         }
 
         try {
-            $this->db->feed
-                ->insert()
-                ->data($data)
-                ->run();
+            $this->db->feed->create($data)
+                ->relate($category)
+                ->save();
         } catch (Throwable $e) {
             if (!$this->logger) {
                 throw $e;

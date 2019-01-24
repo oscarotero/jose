@@ -11,12 +11,7 @@ class UpdateEntries extends Controller
 {
     public function __invoke(ServerRequestInterface $request)
     {
-        $newEntries = new FetchNewEntries(
-            $this->app->get('db'),
-            $this->app->get('logger')
-        );
-
-        $newEntries();
+        $this->app->update();
         
         return Factory::createResponse(302)
             ->withHeader('Location', (string) $this->app->getUri());

@@ -24,7 +24,8 @@
         "middlewares/encoder": "^1.0",
         "middlewares/http-authentication": "^1.0",
         "middlewares/reporting-logger": "^1.0",
-        "middlewares/payload": "^1.0"
+        "middlewares/payload": "^1.0",
+        "fly-crud/fly-crud": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -37,6 +38,7 @@
         }
     },
     "scripts": {
-        "start": "php -S localhost:8888 -t public public/index.php"
+        "start": "php -S localhost:8888 -t public public/index.php",
+        "database": "phinx migrate"
     }
 }
