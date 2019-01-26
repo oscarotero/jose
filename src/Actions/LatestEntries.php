@@ -19,11 +19,10 @@ class LatestEntries
         $query = $this->db->entry
             ->select()
             ->leftJoin('feed')
-            ->leftJoin('image')
             ->where('feed.isEnabled = 1')
             ->where('entry.isHidden = 0')
             ->page($page, 50)
-            ->orderBy('id', 'DESC');
+            ->orderBy('entry.id', 'DESC');
 
         if ($saved) {
             $query->where('entry.isSaved = 1');
@@ -41,6 +40,9 @@ class LatestEntries
             $query->where('entry.title LIKE :search', [':search' => "%{$search}%"]);
         }
 
-        return $query->run();
+        $result = $query->run();
+        $result->image;
+
+        return $result;
     }
 }
