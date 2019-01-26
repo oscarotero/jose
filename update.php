@@ -6,7 +6,7 @@ use Jose\Actions;
 use Symfony\Component\Yaml\Yaml;
 
 //Init .env variables
-(new Dotenv\Dotenv(__DIR__))->load();
+Dotenv\Dotenv::create(__DIR__)->load();
 
 Env::init();
 

@@ -3,7 +3,7 @@
 include __DIR__.'/vendor/autoload.php';
 
 //Init .env variables
-(new Dotenv\Dotenv(__DIR__))->load();
+Dotenv\Dotenv::create(__DIR__)->load();
 
 Env::init();
 

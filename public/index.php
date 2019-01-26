@@ -1,7 +1,7 @@
 <?php
 
 use Zend\Diactoros\ServerRequestFactory;
-use Zend\Diactoros\Response\SapiEmitter;
+use Zend\HttpHandlerRunner\Emitter\SapiEmitter;
 
 //Error configuration and security
 ini_set('error_reporting', E_ALL);
@@ -19,7 +19,7 @@ if (php_sapi_name() === 'cli-server' && Server::run(__DIR__)) {
 }
 
 //Init .env variables
-(new Dotenv\Dotenv(dirname(__DIR__)))->load();
+Dotenv\Dotenv::create(dirname(__DIR__))->load();
 
 Env::init();
 
