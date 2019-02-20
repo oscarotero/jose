@@ -38,7 +38,6 @@ function assets(request) {
         }
 
         return fetch(request)
-            .catch(errorResponse)
             .then(saveCache(request, 'assets'));
     });
 }
