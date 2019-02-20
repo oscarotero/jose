@@ -82,3 +82,8 @@ document.getElementById('refresh-form').addEventListener('submit', e => {
         }, 1000)
     });
 });
+
+//Service worker
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(error => console.log('Registration failed with ' + error));
+}
