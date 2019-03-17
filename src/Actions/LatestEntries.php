@@ -2,14 +2,14 @@
 
 namespace Jose\Actions;
 
-use SimpleCrud\SimpleCrud;
+use SimpleCrud\Database;
 use SimpleCrud\RowCollection;
 
 class LatestEntries
 {
     private $db;
 
-    public function __construct(SimpleCrud $db)
+    public function __construct(Database $db)
     {
         $this->db = $db;
     }
@@ -18,7 +18,7 @@ class LatestEntries
     {
         $query = $this->db->entry
             ->select()
-            ->leftJoin('feed')
+            ->leftJoin($this->db->feed)
             ->where('feed.isEnabled = 1')
             ->where('entry.isHidden = 0')
             ->page($page, 50)
@@ -29,19 +29,22 @@ class LatestEntries
         }
 
         if ($category) {
-            $query->where('feed.category_id = :category', [':category' => $category]);
+            $query->where('feed.category_id = ', $category);
         }
 
         if ($feed) {
-            $query->where('feed.id = :feed', [':feed' => $feed]);
+            $query->where('feed.id = ', $feed);
         }
 
         if ($search) {
-            $query->where('entry.title LIKE :search', [':search' => "%{$search}%"]);
+            $query->where('entry.title LIKE ', "%{$search}%");
         }
 
         $result = $query->run();
+      
+        //Load relations
         $result->image;
+        $result->feed;
 
         return $result;
     }

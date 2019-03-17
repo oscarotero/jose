@@ -3,7 +3,7 @@
 namespace Jose\Actions;
 
 use Jose\Parser;
-use SimpleCrud\SimpleCrud;
+use SimpleCrud\Database;
 use SimpleCrud\Row;
 use Psr\Log\LoggerInterface;
 use Imagecow\Image;
@@ -16,7 +16,7 @@ class FetchNewEntries
     private $parser;
     private $logger;
 
-    public function __construct(SimpleCrud $db, LoggerInterface $logger = null, Parser $parser = null)
+    public function __construct(Database $db, LoggerInterface $logger = null, Parser $parser = null)
     {
         $this->db = $db;
         $this->logger = $logger;

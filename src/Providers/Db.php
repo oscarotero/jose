@@ -4,10 +4,10 @@ namespace Jose\Providers;
 
 use Psr\Container\ContainerInterface;
 use Interop\Container\ServiceProviderInterface;
-use SimpleCrud\SimpleCrud;
+use SimpleCrud\Database;
 use PDO;
 
-class Database implements ServiceProviderInterface
+class Db implements ServiceProviderInterface
 {
     public function getFactories()
     {
@@ -20,8 +20,8 @@ class Database implements ServiceProviderInterface
                 );
             },
 
-            'db' => function (ContainerInterface $container): SimpleCrud {
-                return new SimpleCrud($container->get('pdo'));
+            'db' => function (ContainerInterface $container): Database {
+                return new Database($container->get('pdo'));
             }
         ];
     }

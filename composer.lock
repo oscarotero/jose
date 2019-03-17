@@ -4,20 +4,128 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "914c3e27522e3a0d1f903eaa8856e020",
+    "content-hash": "a586526ae3163e1f4f2156508fd21bed",
     "packages": [
         {
-            "name": "cakephp/cache",
-            "version": "3.7.3",
+            "name": "atlas/pdo",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/cakephp/cache.git",
-                "reference": "173502b262b62612763297b9b3a73a5a88492425"
+                "url": "https://github.com/atlasphp/Atlas.Pdo.git",
+                "reference": "31e9aa28f86d999260ac842da45a81f46b8c4826"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cache/zipball/173502b262b62612763297b9b3a73a5a88492425",
-                "reference": "173502b262b62612763297b9b3a73a5a88492425",
+                "url": "https://api.github.com/repos/atlasphp/Atlas.Pdo/zipball/31e9aa28f86d999260ac842da45a81f46b8c4826",
+                "reference": "31e9aa28f86d999260ac842da45a81f46b8c4826",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "pds/skeleton": "~1.0",
+                "phpunit/phpunit": "~7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Atlas\\Pdo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Atlas.Pdo Contributors",
+                    "homepage": "https://github.com/atlasphp/Atlas.Pdo/contributors"
+                }
+            ],
+            "description": "Provides a PDO instance decorator with convenience methods, and a connection manager.",
+            "homepage": "https://github.com/atlasphp/Atlas.Pdo",
+            "keywords": [
+                "Connection",
+                "database",
+                "pdo",
+                "sql"
+            ],
+            "time": "2019-03-01T14:17:13+00:00"
+        },
+        {
+            "name": "atlas/query",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/atlasphp/Atlas.Query.git",
+                "reference": "6b3e6fcc6ca9be8ac1685cfe8ccecf90e03e68dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/atlasphp/Atlas.Query/zipball/6b3e6fcc6ca9be8ac1685cfe8ccecf90e03e68dc",
+                "reference": "6b3e6fcc6ca9be8ac1685cfe8ccecf90e03e68dc",
+                "shasum": ""
+            },
+            "require": {
+                "atlas/pdo": "~1.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "pds/skeleton": "~1.0",
+                "phpunit/phpunit": "~7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Atlas\\Query\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Atlas.Query Contributors",
+                    "homepage": "https://github.com/atlasphp/Atlas.Query/contributors"
+                }
+            ],
+            "description": "Object-oriented query builders for MySQL, Postgres, SQLite, and SQLServer.",
+            "homepage": "https://github.com/atlasphp/Atlas.Query",
+            "keywords": [
+                "database",
+                "db",
+                "delete",
+                "dml",
+                "insert",
+                "mysql",
+                "pdo",
+                "pgsql",
+                "postgres",
+                "postgresql",
+                "query",
+                "select",
+                "sql",
+                "sql server",
+                "sqlite",
+                "sqlserver",
+                "update"
+            ],
+            "time": "2018-08-12T14:19:01+00:00"
+        },
+        {
+            "name": "cakephp/cache",
+            "version": "3.7.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cakephp/cache.git",
+                "reference": "16f113ede9ce4df77361dec0f942aaf871647d9a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cakephp/cache/zipball/16f113ede9ce4df77361dec0f942aaf871647d9a",
+                "reference": "16f113ede9ce4df77361dec0f942aaf871647d9a",
                 "shasum": ""
             },
             "require": {
@@ -47,11 +155,11 @@
                 "caching",
                 "cakephp"
             ],
-            "time": "2018-12-27T20:11:28+00:00"
+            "time": "2019-02-17T17:30:29+00:00"
         },
         {
             "name": "cakephp/collection",
-            "version": "3.7.3",
+            "version": "3.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/collection.git",
@@ -97,16 +205,16 @@
         },
         {
             "name": "cakephp/core",
-            "version": "3.7.3",
+            "version": "3.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
-                "reference": "6325801be06e3fdddc6f49b486861dd47dc5a4fe"
+                "reference": "9a70f1beb7fcc259e1f7050d19c54adcf43032b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/core/zipball/6325801be06e3fdddc6f49b486861dd47dc5a4fe",
-                "reference": "6325801be06e3fdddc6f49b486861dd47dc5a4fe",
+                "url": "https://api.github.com/repos/cakephp/core/zipball/9a70f1beb7fcc259e1f7050d19c54adcf43032b1",
+                "reference": "9a70f1beb7fcc259e1f7050d19c54adcf43032b1",
                 "shasum": ""
             },
             "require": {
@@ -114,6 +222,7 @@
                 "php": ">=5.6.0"
             },
             "suggest": {
+                "cakephp/cache": "To use Configure::store() and restore().",
                 "cakephp/event": "To use PluginApplicationInterface or plugin applications."
             },
             "type": "library",
@@ -142,20 +251,20 @@
                 "core",
                 "framework"
             ],
-            "time": "2019-01-12T17:08:38+00:00"
+            "time": "2019-02-09T07:54:49+00:00"
         },
         {
             "name": "cakephp/database",
-            "version": "3.7.3",
+            "version": "3.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
-                "reference": "1490aad40f0dd104400ee5c9f3ce5e9667b19b58"
+                "reference": "9347f2edfbc98426e1cd8a9f94a6c879a03d2cb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/database/zipball/1490aad40f0dd104400ee5c9f3ce5e9667b19b58",
-                "reference": "1490aad40f0dd104400ee5c9f3ce5e9667b19b58",
+                "url": "https://api.github.com/repos/cakephp/database/zipball/9347f2edfbc98426e1cd8a9f94a6c879a03d2cb7",
+                "reference": "9347f2edfbc98426e1cd8a9f94a6c879a03d2cb7",
                 "shasum": ""
             },
             "require": {
@@ -190,20 +299,20 @@
                 "database abstraction",
                 "pdo"
             ],
-            "time": "2019-01-04T08:10:50+00:00"
+            "time": "2019-03-04T17:27:24+00:00"
         },
         {
             "name": "cakephp/datasource",
-            "version": "3.7.3",
+            "version": "3.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
-                "reference": "d98a1675da0b62da834f86c976b2337db38adb49"
+                "reference": "08b5367426f4ee0388bd598fcf2bb994cd0f92c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/datasource/zipball/d98a1675da0b62da834f86c976b2337db38adb49",
-                "reference": "d98a1675da0b62da834f86c976b2337db38adb49",
+                "url": "https://api.github.com/repos/cakephp/datasource/zipball/08b5367426f4ee0388bd598fcf2bb994cd0f92c4",
+                "reference": "08b5367426f4ee0388bd598fcf2bb994cd0f92c4",
                 "shasum": ""
             },
             "require": {
@@ -240,20 +349,20 @@
                 "entity",
                 "query"
             ],
-            "time": "2018-12-13T23:20:56+00:00"
+            "time": "2019-02-14T16:36:35+00:00"
         },
         {
             "name": "cakephp/log",
-            "version": "3.7.3",
+            "version": "3.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/log.git",
-                "reference": "45682ac6707d6d341dae6470fe356fe60325022e"
+                "reference": "f2132d585e848f5273a36ca1b62dfbd56c1557b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/log/zipball/45682ac6707d6d341dae6470fe356fe60325022e",
-                "reference": "45682ac6707d6d341dae6470fe356fe60325022e",
+                "url": "https://api.github.com/repos/cakephp/log/zipball/f2132d585e848f5273a36ca1b62dfbd56c1557b9",
+                "reference": "f2132d585e848f5273a36ca1b62dfbd56c1557b9",
                 "shasum": ""
             },
             "require": {
@@ -285,11 +394,11 @@
                 "log",
                 "logging"
             ],
-            "time": "2018-04-24T11:15:51+00:00"
+            "time": "2019-02-05T13:29:41+00:00"
         },
         {
             "name": "cakephp/utility",
-            "version": "3.7.3",
+            "version": "3.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
@@ -342,16 +451,16 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.1.3",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "8afa52cd417f4ec417b4bfe86b68106538a87660"
+                "reference": "558f321c52faeb4828c03e7dc0cfe39a09e09a2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/8afa52cd417f4ec417b4bfe86b68106538a87660",
-                "reference": "8afa52cd417f4ec417b4bfe86b68106538a87660",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/558f321c52faeb4828c03e7dc0cfe39a09e09a2d",
+                "reference": "558f321c52faeb4828c03e7dc0cfe39a09e09a2d",
                 "shasum": ""
             },
             "require": {
@@ -394,7 +503,7 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2018-10-18T06:09:13+00:00"
+            "time": "2019-01-28T09:30:10+00:00"
         },
         {
             "name": "container-interop/service-provider",
@@ -429,16 +538,16 @@
         },
         {
             "name": "embed/embed",
-            "version": "v3.3.7",
+            "version": "v3.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "9666691c78b25047bc6ee7e94823de3eaadce0c6"
+                "reference": "4f0d7c0ba8dce13228fd35b7a73cd4ef5ab0f02c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/9666691c78b25047bc6ee7e94823de3eaadce0c6",
-                "reference": "9666691c78b25047bc6ee7e94823de3eaadce0c6",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/4f0d7c0ba8dce13228fd35b7a73cd4ef5ab0f02c",
+                "reference": "4f0d7c0ba8dce13228fd35b7a73cd4ef5ab0f02c",
                 "shasum": ""
             },
             "require": {
@@ -478,7 +587,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2018-10-22T21:59:03+00:00"
+            "time": "2019-02-25T15:07:28+00:00"
         },
         {
             "name": "imagecow/imagecow",
@@ -1081,16 +1190,16 @@
         },
         {
             "name": "middlewares/utils",
-            "version": "v2.1.1",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/middlewares/utils.git",
-                "reference": "8e3f2720fa462443e1566c9e3ab78169adcb0468"
+                "reference": "7dc49454b4fbf249226023c7b77658b6068abfbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/utils/zipball/8e3f2720fa462443e1566c9e3ab78169adcb0468",
-                "reference": "8e3f2720fa462443e1566c9e3ab78169adcb0468",
+                "url": "https://api.github.com/repos/middlewares/utils/zipball/7dc49454b4fbf249226023c7b77658b6068abfbc",
+                "reference": "7dc49454b4fbf249226023c7b77658b6068abfbc",
                 "shasum": ""
             },
             "require": {
@@ -1104,7 +1213,7 @@
                 "friendsofphp/php-cs-fixer": "^2.0",
                 "guzzlehttp/psr7": "^1.3",
                 "phpunit/phpunit": "^6.0|^7.0",
-                "slim/slim": "^3.5",
+                "slim/http": "^0.3",
                 "squizlabs/php_codesniffer": "^3.0",
                 "zendframework/zend-diactoros": "^1.3"
             },
@@ -1128,7 +1237,7 @@
                 "psr-17",
                 "psr-7"
             ],
-            "time": "2018-08-11T07:23:25+00:00"
+            "time": "2019-03-05T22:06:37+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1820,24 +1929,26 @@
         },
         {
             "name": "simple-crud/simple-crud",
-            "version": "v6.13.0",
+            "version": "dev-7-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/simple-crud.git",
-                "reference": "d65f51c76c0f7f383399fa5460a67265212bc9ac"
+                "reference": "277636307e514541b9080abc7a7d76dcd720f8b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/simple-crud/zipball/d65f51c76c0f7f383399fa5460a67265212bc9ac",
-                "reference": "d65f51c76c0f7f383399fa5460a67265212bc9ac",
+                "url": "https://api.github.com/repos/oscarotero/simple-crud/zipball/277636307e514541b9080abc7a7d76dcd720f8b4",
+                "reference": "277636307e514541b9080abc7a7d76dcd720f8b4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4"
+                "atlas/pdo": "^1.1",
+                "atlas/query": "^1.2",
+                "php": ">=7.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8 || ^5.5",
-                "zendframework/zend-diactoros": "^1.3"
+                "friendsofphp/php-cs-fixer": "^2.11",
+                "phpunit/phpunit": "^6.0"
             },
             "type": "library",
             "autoload": {
@@ -1864,7 +1975,7 @@
                 "mysql",
                 "sqlite"
             ],
-            "time": "2019-01-24T16:32:31+00:00"
+            "time": "2018-10-23T10:31:41+00:00"
         },
         {
             "name": "simplepie/simplepie",
@@ -1935,16 +2046,16 @@
         },
         {
             "name": "symfony/config",
-            "version": "v4.2.2",
+            "version": "v4.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "a7a7d0a0244cfc82f040729ccf769e6cf55a78fb"
+                "reference": "7f70d79c7a24a94f8e98abb988049403a53d7b31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/a7a7d0a0244cfc82f040729ccf769e6cf55a78fb",
-                "reference": "a7a7d0a0244cfc82f040729ccf769e6cf55a78fb",
+                "url": "https://api.github.com/repos/symfony/config/zipball/7f70d79c7a24a94f8e98abb988049403a53d7b31",
+                "reference": "7f70d79c7a24a94f8e98abb988049403a53d7b31",
                 "shasum": ""
             },
             "require": {
@@ -1994,20 +2105,20 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-03T09:07:35+00:00"
+            "time": "2019-02-23T15:17:42+00:00"
         },
         {
             "name": "symfony/console",
-            "version": "v4.2.2",
+            "version": "v4.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "b0a03c1bb0fcbe288629956cf2f1dd3f1dc97522"
+                "reference": "9dc2299a016497f9ee620be94524e6c0af0280a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/b0a03c1bb0fcbe288629956cf2f1dd3f1dc97522",
-                "reference": "b0a03c1bb0fcbe288629956cf2f1dd3f1dc97522",
+                "url": "https://api.github.com/repos/symfony/console/zipball/9dc2299a016497f9ee620be94524e6c0af0280a9",
+                "reference": "9dc2299a016497f9ee620be94524e6c0af0280a9",
                 "shasum": ""
             },
             "require": {
@@ -2019,6 +2130,9 @@
                 "symfony/dependency-injection": "<3.4",
                 "symfony/process": "<3.3"
             },
+            "provide": {
+                "psr/log-implementation": "1.0"
+            },
             "require-dev": {
                 "psr/log": "~1.0",
                 "symfony/config": "~3.4|~4.0",
@@ -2028,7 +2142,7 @@
                 "symfony/process": "~3.4|~4.0"
             },
             "suggest": {
-                "psr/log-implementation": "For using the console logger",
+                "psr/log": "For using the console logger",
                 "symfony/event-dispatcher": "",
                 "symfony/lock": "",
                 "symfony/process": ""
@@ -2063,7 +2177,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-04T15:13:53+00:00"
+            "time": "2019-02-23T15:17:42+00:00"
         },
         {
             "name": "symfony/contracts",
@@ -2135,16 +2249,16 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v4.2.2",
+            "version": "v4.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "76dac1dbe2830213e95892c7c2ec1edd74113ea4"
+                "reference": "48eddf66950fa57996e1be4a55916d65c10c604a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/76dac1dbe2830213e95892c7c2ec1edd74113ea4",
-                "reference": "76dac1dbe2830213e95892c7c2ec1edd74113ea4",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/48eddf66950fa57996e1be4a55916d65c10c604a",
+                "reference": "48eddf66950fa57996e1be4a55916d65c10c604a",
                 "shasum": ""
             },
             "require": {
@@ -2184,20 +2298,20 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-03T09:07:35+00:00"
+            "time": "2019-01-16T20:31:39+00:00"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.2.2",
+            "version": "v4.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "c2ffd9a93f2d6c5be2f68a0aa7953cc229f871f8"
+                "reference": "e16b9e471703b2c60b95f14d31c1239f68f11601"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/c2ffd9a93f2d6c5be2f68a0aa7953cc229f871f8",
-                "reference": "c2ffd9a93f2d6c5be2f68a0aa7953cc229f871f8",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/e16b9e471703b2c60b95f14d31c1239f68f11601",
+                "reference": "e16b9e471703b2c60b95f14d31c1239f68f11601",
                 "shasum": ""
             },
             "require": {
@@ -2234,7 +2348,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-03T09:07:35+00:00"
+            "time": "2019-02-07T11:40:08+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -2355,16 +2469,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.2.2",
+            "version": "v4.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "d0aa6c0ea484087927b49fd513383a7d36190ca6"
+                "reference": "761fa560a937fd7686e5274ff89dcfa87a5047df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/d0aa6c0ea484087927b49fd513383a7d36190ca6",
-                "reference": "d0aa6c0ea484087927b49fd513383a7d36190ca6",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/761fa560a937fd7686e5274ff89dcfa87a5047df",
+                "reference": "761fa560a937fd7686e5274ff89dcfa87a5047df",
                 "shasum": ""
             },
             "require": {
@@ -2410,25 +2524,26 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-03T09:07:35+00:00"
+            "time": "2019-02-23T15:17:42+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v3.2.0",
+            "version": "v3.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "736602fab067eee2e6fa1145f011e6798313d9d9"
+                "reference": "dbcc609971dd9b55f48b8008b553d79fd372ddde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/736602fab067eee2e6fa1145f011e6798313d9d9",
-                "reference": "736602fab067eee2e6fa1145f011e6798313d9d9",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/dbcc609971dd9b55f48b8008b553d79fd372ddde",
+                "reference": "dbcc609971dd9b55f48b8008b553d79fd372ddde",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.4 || ^7.0",
-                "phpoption/phpoption": "^1.5"
+                "phpoption/phpoption": "^1.5",
+                "symfony/polyfill-ctype": "^1.9"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.8.35 || ^5.0 || ^6.0"
@@ -2436,7 +2551,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2-dev"
+                    "dev-master": "3.3-dev"
                 }
             },
             "autoload": {
@@ -2461,7 +2576,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2019-01-24T20:33:37+00:00"
+            "time": "2019-03-06T09:39:45+00:00"
         },
         {
             "name": "willdurand/negotiation",
@@ -2583,16 +2698,16 @@
         },
         {
             "name": "zendframework/zend-httphandlerrunner",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-httphandlerrunner.git",
-                "reference": "5e4c1e82a8bb1585020eafd32c49ece5a6ee98df"
+                "reference": "75fb12751fe9d6e392cce1ee0d687dacae2db787"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-httphandlerrunner/zipball/5e4c1e82a8bb1585020eafd32c49ece5a6ee98df",
-                "reference": "5e4c1e82a8bb1585020eafd32c49ece5a6ee98df",
+                "url": "https://api.github.com/repos/zendframework/zend-httphandlerrunner/zipball/75fb12751fe9d6e392cce1ee0d687dacae2db787",
+                "reference": "75fb12751fe9d6e392cce1ee0d687dacae2db787",
                 "shasum": ""
             },
             "require": {
@@ -2602,14 +2717,15 @@
                 "psr/http-server-handler": "^1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.3",
+                "phpunit/phpunit": "^7.0.2",
                 "zendframework/zend-coding-standard": "~1.0.0",
-                "zendframework/zend-diactoros": "^1.7"
+                "zendframework/zend-diactoros": "^1.7 || ^2.1.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.1.x-dev",
+                    "dev-develop": "1.2.x-dev"
                 },
                 "zf": {
                     "config-provider": "Zend\\HttpHandlerRunner\\ConfigProvider"
@@ -2633,16 +2749,20 @@
                 "psr-7",
                 "zf"
             ],
-            "time": "2018-02-21T20:33:02+00:00"
+            "time": "2019-02-19T18:20:34+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "simple-crud/simple-crud": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=7.2"
+    },
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2"
