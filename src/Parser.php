@@ -61,7 +61,7 @@ class Parser
 
         $scrapper = $scrappers->select()
                         ->one()
-                        ->where('url LIKE :url', [':url' => "%{$url}%"])
+                        ->where('url LIKE ', "%{$url}%")
                         ->run();
 
         $body = $this->extractBody($embed->getResponse(), $scrapper) ?: $embed->code;
@@ -180,7 +180,8 @@ class Parser
         $src = $element->getAttribute('src');
 
         if ($src) {
-            $element->setAttribute('src', $url->getAbsolute($src));
+            $proxied = 'proxy.php?'.http_build_query(['url' => $url->getAbsolute($src)]);
+            $element->setAttribute('src', $proxied);
         }
 
         if ($element->hasAttribute('srcset')) {

@@ -33,7 +33,9 @@ class ToggleHide
 
             $this->logger->error($e->getMessage(), [
                 'exception' => $e,
-                'data' => 'data'
+                'file' => __FILE__,
+                'line' => __LINE__,
+                'data' => $id
             ]);
         }
     }

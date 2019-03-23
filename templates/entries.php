@@ -38,23 +38,34 @@ $timeago = new Westsworld\TimeAgo();
 <ul class="entries">
     <?php foreach ($entries as $entry): ?>
     <li>
-        <?php $this->insert('entry', ['entry' => $entry, 'timeago' => $timeago]) ?>
+        <?php $this->insert('entry', compact('entry', 'timeago')) ?>
     </li>
     <?php endforeach ?>
 </ul>
 
-<?php if (count($entries) === 50): ?>
+<?php $page = $entries->page ?>
 <nav class="pagination">
+<?php if ($page['previous']): ?>
 	<a href="?<?php
         echo http_build_query([
-            'page' => $page + 1,
+            'page' => $page['previous'],
             'category' => $category,
             'saved' => $saved,
             'feed' => $feed
         ]);
-    ?>" class="button">Next page (<?= $page + 1 ?>)</a>
-</nav>
+    ?>" class="button">Previous page (<?= $page['previous'] ?>)</a>
 <?php endif ?>
+<?php if ($page['next']): ?>
+	<a href="?<?php
+        echo http_build_query([
+            'page' => $page['next'],
+            'category' => $category,
+            'saved' => $saved,
+            'feed' => $feed
+        ]);
+    ?>" class="button">Next page (<?= $page['next'] ?>)</a>
+<?php endif ?>
+</nav>
 
 <a href="#top" class="float-button">
     <em>Top</em>

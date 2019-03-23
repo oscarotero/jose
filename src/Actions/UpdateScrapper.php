@@ -30,7 +30,7 @@ class UpdateScrapper
         $scrapper = $this->db->scrapper
                 ->select()
                 ->one()
-                ->by('url', $data['url'])
+                ->where('url = ', $data['url'])
                 ->run();
 
         if ($scrapper) {
@@ -39,8 +39,7 @@ class UpdateScrapper
 
         try {
             $this->db->scrapper
-                ->insert()
-                ->data($data)
+                ->insert($data)
                 ->run();
         } catch (Throwable $e) {
             if (!$this->logger) {
@@ -49,7 +48,9 @@ class UpdateScrapper
 
             $this->logger->error($e->getMessage(), [
                 'exception' => $e,
-                'data' => 'data'
+                'file' => __FILE__,
+                'line' => __LINE__,
+                'data' => $data
             ]);
         }
     }

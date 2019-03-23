@@ -41,6 +41,8 @@ class LatestEntries
         }
 
         $result = $query->run();
+        $page = $query->getPageInfo();
+        $result->setData(compact('page'));
       
         //Load relations
         $result->image;
