@@ -18,11 +18,12 @@ class LatestEntries
     {
         $query = $this->db->entry
             ->select()
-            ->leftJoin($this->db->feed)
+            ->joinRelation($this->db->feed)
             ->where('feed.isEnabled = 1')
             ->where('entry.isHidden = 0')
-            ->page($page, 50)
-            ->orderBy('entry.id', 'DESC');
+            ->page($page)
+            ->perPage(50)
+            ->orderBy('entry.id DESC');
 
         if ($saved) {
             $query->where('entry.isSaved = 1');
