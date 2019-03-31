@@ -45,25 +45,25 @@ $timeago = new Westsworld\TimeAgo();
 
 <?php $page = $entries->page ?>
 <nav class="pagination">
-<?php if ($page['previous']): ?>
+<?php if ($page['previousPage']): ?>
 	<a href="?<?php
         echo http_build_query([
-            'page' => $page['previous'],
+            'page' => $page['previousPage'],
             'category' => $category,
             'saved' => $saved,
             'feed' => $feed
         ]);
-    ?>" class="button">Previous page (<?= $page['previous'] ?>)</a>
+    ?>" class="button">Previous page (<?= $page['previousPage'] ?>)</a>
 <?php endif ?>
-<?php if ($page['next']): ?>
+<?php if ($page['nextPage']): ?>
 	<a href="?<?php
         echo http_build_query([
-            'page' => $page['next'],
+            'page' => $page['nextPage'],
             'category' => $category,
             'saved' => $saved,
             'feed' => $feed
         ]);
-    ?>" class="button">Next page (<?= $page['next'] ?>)</a>
+    ?>" class="button">Next page (<?= $page['nextPage'] ?>)</a>
 <?php endif ?>
 </nav>
 

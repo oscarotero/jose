@@ -8,7 +8,7 @@
         "middlewares/utils": "^2.0",
         "middlewares/negotiation": "^1.0",
         "embed/embed": "^3.3",
-        "simple-crud/simple-crud": "dev-7-dev",
+        "simple-crud/simple-crud": "dev-master",
         "robmorgan/phinx": "^0.10.0",
         "league/plates": "^3.3",
         "middlewares/fast-route": "^1.0",
