@@ -31,7 +31,7 @@ class ListEntries extends Controller
             'entries' => $entries,
             'categories' => $db->category->select()->run(),
             'page' => $page,
-            'saved' => $saved,
+            'saved' => $saved ?: null,
             'category' => $category,
             'feed' => $feed
         ]);

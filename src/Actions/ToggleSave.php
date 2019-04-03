@@ -2,7 +2,7 @@
 
 namespace Jose\Actions;
 
-use SimpleCrud\SimpleCrud;
+use SimpleCrud\Database;
 use SimpleCrud\RowCollection;
 use Psr\Log\LoggerInterface;
 use Throwable;
@@ -12,7 +12,7 @@ class ToggleSave
     private $db;
     private $logger;
 
-    public function __construct(SimpleCrud $db, LoggerInterface $logger = null)
+    public function __construct(Database $db, LoggerInterface $logger = null)
     {
         $this->db = $db;
         $this->logger = $logger;
@@ -33,7 +33,9 @@ class ToggleSave
 
             $this->logger->error($e->getMessage(), [
                 'exception' => $e,
-                'data' => 'data'
+                'file' => __FILE__,
+                'line' => __LINE__,
+                'data' => $id
             ]);
         }
     }

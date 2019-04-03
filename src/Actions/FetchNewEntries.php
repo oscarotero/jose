@@ -3,7 +3,7 @@
 namespace Jose\Actions;
 
 use Jose\Parser;
-use SimpleCrud\SimpleCrud;
+use SimpleCrud\Database;
 use SimpleCrud\Row;
 use Psr\Log\LoggerInterface;
 use Imagecow\Image;
@@ -16,7 +16,7 @@ class FetchNewEntries
     private $parser;
     private $logger;
 
-    public function __construct(SimpleCrud $db, LoggerInterface $logger = null, Parser $parser = null)
+    public function __construct(Database $db, LoggerInterface $logger = null, Parser $parser = null)
     {
         $this->db = $db;
         $this->logger = $logger;
@@ -51,7 +51,7 @@ class FetchNewEntries
         foreach ($parsed['entries'] as $item) {
             $exists = $this->db->entry
                 ->count()
-                ->by('guid', $item->get_id())
+                ->where('guid = ', $item->get_id())
                 ->limit(1)
                 ->run();
 
@@ -67,9 +67,7 @@ class FetchNewEntries
                     unset($data['image']);
 
                     $this->db->entry
-                        ->insert()
-                        ->duplications()
-                        ->data($data)
+                        ->insert($data)
                         ->run();
                 } catch (Throwable $e) {
                     if (!$this->logger) {
@@ -78,6 +76,8 @@ class FetchNewEntries
 
                     $this->logger->error($e->getMessage(), [
                         'exception' => $e,
+                        'file' => __FILE__,
+                        'line' => __LINE__,
                         'data' => $data ?? null
                     ]);
                 }
@@ -90,7 +90,7 @@ class FetchNewEntries
         $image = $this->db->image
             ->select()
             ->one()
-            ->by('url', $url)
+            ->where('url = ', $url)
             ->run();
 
         if ($image) {
@@ -99,8 +99,7 @@ class FetchNewEntries
 
         try {
             return $this->db->image
-                ->insert()
-                ->data([
+                ->insert([
                     'url' => $url,
                     'data' => Image::fromFile($url)
                                 ->resizeCrop(100, 100)

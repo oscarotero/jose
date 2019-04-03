@@ -2,7 +2,7 @@
 
 namespace Jose\Actions;
 
-use SimpleCrud\SimpleCrud;
+use SimpleCrud\Database;
 use SimpleCrud\RowCollection;
 use Psr\Log\LoggerInterface;
 use Throwable;
@@ -12,7 +12,7 @@ class UpdateFeeds
     private $db;
     private $logger;
 
-    public function __construct(SimpleCrud $db, LoggerInterface $logger = null)
+    public function __construct(Database $db, LoggerInterface $logger = null)
     {
         $this->db = $db;
         $this->logger = $logger;
@@ -30,7 +30,7 @@ class UpdateFeeds
         $feed = $this->db->feed
                 ->select()
                 ->one()
-                ->by('feed', $data['feed'])
+                ->where('feed = ', $data['feed'])
                 ->run();
 
         if ($feed) {
@@ -39,8 +39,7 @@ class UpdateFeeds
 
         try {
             $this->db->feed
-                ->insert()
-                ->data($data)
+                ->insert($data)
                 ->run();
         } catch (Throwable $e) {
             if (!$this->logger) {
@@ -49,7 +48,9 @@ class UpdateFeeds
 
             $this->logger->error($e->getMessage(), [
                 'exception' => $e,
-                'data' => 'data'
+                'file' => __FILE__,
+                'line' => __LINE__,
+                'data' => $data
             ]);
         }
     }

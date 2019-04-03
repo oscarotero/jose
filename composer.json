@@ -1,5 +1,6 @@
 {
     "require": {
+        "php": ">=7.2",
         "oscarotero/fol": "^0.3.0",
         "simplepie/simplepie": "^1.5",
         "zendframework/zend-diactoros": "^2.0",
@@ -7,7 +8,7 @@
         "middlewares/utils": "^2.0",
         "middlewares/negotiation": "^1.0",
         "embed/embed": "^3.3",
-        "simple-crud/simple-crud": "^6.12",
+        "simple-crud/simple-crud": "^7.0",
         "robmorgan/phinx": "^0.10.0",
         "league/plates": "^3.3",
         "middlewares/fast-route": "^1.0",

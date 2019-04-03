@@ -15,7 +15,7 @@ class App extends FolApp
     {
         parent::__construct(dirname(__DIR__), Factory::createUri(env('JOSE_URL')));
 
-        $this->addServiceProvider(new Providers\Database);
+        $this->addServiceProvider(new Providers\Db);
         $this->addServiceProvider(new Providers\Router);
         $this->addServiceProvider(new Providers\Templates);
         $this->addServiceProvider(new Providers\Logger);
