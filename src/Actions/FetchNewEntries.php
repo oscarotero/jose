@@ -50,7 +50,7 @@ class FetchNewEntries
 
         foreach ($parsed['entries'] as $item) {
             $exists = $this->db->entry
-                ->count()
+                ->selectAggregate('COUNT')
                 ->where('guid = ', $item->get_id())
                 ->limit(1)
                 ->run();
