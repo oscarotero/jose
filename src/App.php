@@ -26,6 +26,7 @@ class App extends FolApp
         $container = new Middlewares\Utils\RequestHandlerContainer([$this]);
 
         return Dispatcher::run([
+            new Middlewares\ResponseTime(),
             new Middlewares\JsonPayload(),
             (new Middlewares\ReportingLogger($this->get('logger')))
                 ->message('JS Error'),

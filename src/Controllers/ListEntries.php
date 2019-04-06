@@ -25,7 +25,10 @@ class ListEntries extends Controller
         $search = $query['q'] ?? null;
 
         $entries = $latestEntries($page, $saved, $category, $feed, $search);
+
+        //Load relations
         $entries->feed->category;
+        $entries->image;
 
         echo $this->app->get('templates')->render('entries', [
             'entries' => $entries,

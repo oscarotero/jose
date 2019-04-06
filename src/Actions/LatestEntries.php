@@ -45,10 +45,6 @@ class LatestEntries
         $page = $query->getPageInfo();
         $result->setData(compact('page'));
       
-        //Load relations
-        $result->image;
-        $result->feed;
-
         return $result;
     }
 }

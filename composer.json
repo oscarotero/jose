@@ -26,7 +26,8 @@
         "middlewares/http-authentication": "^1.0",
         "middlewares/reporting-logger": "^1.0",
         "middlewares/payload": "^2.0",
-        "zendframework/zend-httphandlerrunner": "^1.0"
+        "zendframework/zend-httphandlerrunner": "^1.0",
+        "middlewares/response-time": "^1.1"
     },
     "autoload": {
         "psr-4": {
