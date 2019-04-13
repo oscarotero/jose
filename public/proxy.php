@@ -2,25 +2,20 @@
 $url = $_GET['url'] ?? null;
 
 if ($url) {
-    $types = [
-        'png' => 'image/png',
-        'jpg' => 'image/jpeg',
-        'gif' => 'image/gif',
-        'svg' => 'image/svg+xml',
-        'ico' => 'image/x-icon',
-        'webp' => 'image/webp',
-        'mp3' => 'audio/mpeg',
-        'mp4' => 'video/mp4',
-        'mov' => 'video/quicktime',
-        'ogg' => 'audio/ogg',
-        'webm' => 'video/webm',
-    ];
+    $fp = fopen($url, 'r');
+    $meta_data = stream_get_meta_data($fp);
+    $headers = $meta_data['wrapper_data'] ?? [];
 
-    $path = parse_url($url, PHP_URL_PATH);
-    $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
-
-    if (isset($types[$ext])) {
-        header(sprintf('Content-Type: %s', $types[$ext]));
-        readfile($url);
+    foreach ($headers as $header) {
+        if (strpos($header, ':') !== false) {
+           header($header);
+        }
     }
+
+    while (!feof($fp)) {
+        $chunk = fread($fp, 8192);
+        echo $chunk;
+    }
+
+    fclose($fp);
 }
