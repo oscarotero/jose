@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "efc560663452bcc8c63ed11b5e9bba4c",
+    "content-hash": "625aa198a04cab978adb6f14078f858b",
     "packages": [
         {
             "name": "atlas/pdo",
@@ -116,21 +116,22 @@
         },
         {
             "name": "cakephp/cache",
-            "version": "3.7.5",
+            "version": "3.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cache.git",
-                "reference": "16f113ede9ce4df77361dec0f942aaf871647d9a"
+                "reference": "238209c7f7242f5c670efc27b6f1e259da111dbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cache/zipball/16f113ede9ce4df77361dec0f942aaf871647d9a",
-                "reference": "16f113ede9ce4df77361dec0f942aaf871647d9a",
+                "url": "https://api.github.com/repos/cakephp/cache/zipball/238209c7f7242f5c670efc27b6f1e259da111dbc",
+                "reference": "238209c7f7242f5c670efc27b6f1e259da111dbc",
                 "shasum": ""
             },
             "require": {
                 "cakephp/core": "^3.6.0",
-                "php": ">=5.6.0"
+                "php": ">=5.6.0",
+                "psr/simple-cache": "^1.0.0"
             },
             "type": "library",
             "autoload": {
@@ -155,11 +156,11 @@
                 "caching",
                 "cakephp"
             ],
-            "time": "2019-02-17T17:30:29+00:00"
+            "time": "2019-04-09T19:27:04+00:00"
         },
         {
             "name": "cakephp/collection",
-            "version": "3.7.5",
+            "version": "3.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/collection.git",
@@ -205,16 +206,16 @@
         },
         {
             "name": "cakephp/core",
-            "version": "3.7.5",
+            "version": "3.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
-                "reference": "9a70f1beb7fcc259e1f7050d19c54adcf43032b1"
+                "reference": "9742e7b325566df2e5ffcbdadc41049b9fa505fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/core/zipball/9a70f1beb7fcc259e1f7050d19c54adcf43032b1",
-                "reference": "9a70f1beb7fcc259e1f7050d19c54adcf43032b1",
+                "url": "https://api.github.com/repos/cakephp/core/zipball/9742e7b325566df2e5ffcbdadc41049b9fa505fe",
+                "reference": "9742e7b325566df2e5ffcbdadc41049b9fa505fe",
                 "shasum": ""
             },
             "require": {
@@ -251,11 +252,11 @@
                 "core",
                 "framework"
             ],
-            "time": "2019-02-09T07:54:49+00:00"
+            "time": "2019-03-14T15:11:58+00:00"
         },
         {
             "name": "cakephp/database",
-            "version": "3.7.5",
+            "version": "3.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
@@ -303,7 +304,7 @@
         },
         {
             "name": "cakephp/datasource",
-            "version": "3.7.5",
+            "version": "3.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
@@ -353,7 +354,7 @@
         },
         {
             "name": "cakephp/log",
-            "version": "3.7.5",
+            "version": "3.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/log.git",
@@ -398,16 +399,16 @@
         },
         {
             "name": "cakephp/utility",
-            "version": "3.7.5",
+            "version": "3.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
-                "reference": "1a4d271d9a3ad6e0096eabf5778342c8b5f81978"
+                "reference": "329654495c4cf966ac75832e502ec939542928fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/utility/zipball/1a4d271d9a3ad6e0096eabf5778342c8b5f81978",
-                "reference": "1a4d271d9a3ad6e0096eabf5778342c8b5f81978",
+                "url": "https://api.github.com/repos/cakephp/utility/zipball/329654495c4cf966ac75832e502ec939542928fb",
+                "reference": "329654495c4cf966ac75832e502ec939542928fb",
                 "shasum": ""
             },
             "require": {
@@ -447,7 +448,7 @@
                 "string",
                 "utility"
             ],
-            "time": "2018-09-14T01:26:50+00:00"
+            "time": "2019-03-14T14:41:29+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -636,16 +637,16 @@
         },
         {
             "name": "jimmiw/php-time-ago",
-            "version": "3.0.5",
+            "version": "3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jimmiw/php-time-ago.git",
-                "reference": "b1e26dea89e17a03118b12fb3e03fa9129803a45"
+                "reference": "e61983105e73e78efc3ff2a43faa2cf47f633e86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jimmiw/php-time-ago/zipball/b1e26dea89e17a03118b12fb3e03fa9129803a45",
-                "reference": "b1e26dea89e17a03118b12fb3e03fa9129803a45",
+                "url": "https://api.github.com/repos/jimmiw/php-time-ago/zipball/e61983105e73e78efc3ff2a43faa2cf47f633e86",
+                "reference": "e61983105e73e78efc3ff2a43faa2cf47f633e86",
                 "shasum": ""
             },
             "require": {
@@ -680,7 +681,7 @@
                 "time ago",
                 "time ago in words"
             ],
-            "time": "2018-11-13T07:57:20+00:00"
+            "time": "2019-04-08T14:06:41+00:00"
         },
         {
             "name": "league/plates",
@@ -1506,6 +1507,54 @@
             "time": "2017-09-22T18:48:41+00:00"
         },
         {
+            "name": "oscarotero/html-parser",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oscarotero/html-parser.git",
+                "reference": "b9b445a45f962ee41b85189184bc60dd8255ed28"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oscarotero/html-parser/zipball/b9b445a45f962ee41b85189184bc60dd8255ed28",
+                "reference": "b9b445a45f962ee41b85189184bc60dd8255ed28",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.11",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HtmlParser\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oscar Otero",
+                    "email": "oom@oscarotero.com",
+                    "homepage": "http://oscarotero.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Parse html strings to DOMDocument",
+            "homepage": "https://github.com/oscarotero/html-parser",
+            "keywords": [
+                "dom",
+                "html",
+                "parser"
+            ],
+            "time": "2019-04-21T19:22:18+00:00"
+        },
+        {
             "name": "oscarotero/server",
             "version": "v0.2.0",
             "source": {
@@ -1949,6 +1998,54 @@
             "time": "2018-11-20T15:27:04+00:00"
         },
         {
+            "name": "psr/simple-cache",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/simple-cache.git",
+                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
+                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\SimpleCache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interfaces for simple caching",
+            "keywords": [
+                "cache",
+                "caching",
+                "psr",
+                "psr-16",
+                "simple-cache"
+            ],
+            "time": "2017-10-23T01:57:42+00:00"
+        },
+        {
             "name": "robmorgan/phinx",
             "version": "0.10.6",
             "source": {
@@ -2142,7 +2239,7 @@
         },
         {
             "name": "symfony/config",
-            "version": "v4.2.5",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
@@ -2205,16 +2302,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.2.5",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "24206aff3efe6962593297e57ef697ebb220e384"
+                "reference": "e2840bb38bddad7a0feaf85931e38fdcffdb2f81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/24206aff3efe6962593297e57ef697ebb220e384",
-                "reference": "24206aff3efe6962593297e57ef697ebb220e384",
+                "url": "https://api.github.com/repos/symfony/console/zipball/e2840bb38bddad7a0feaf85931e38fdcffdb2f81",
+                "reference": "e2840bb38bddad7a0feaf85931e38fdcffdb2f81",
                 "shasum": ""
             },
             "require": {
@@ -2273,7 +2370,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2019-04-01T07:32:59+00:00"
+            "time": "2019-04-08T14:23:48+00:00"
         },
         {
             "name": "symfony/contracts",
@@ -2345,7 +2442,7 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v4.2.5",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
@@ -2398,7 +2495,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.2.5",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -2565,7 +2662,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.2.5",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",

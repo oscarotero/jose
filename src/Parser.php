@@ -10,6 +10,7 @@ use Embed\Http\Url;
 use SimpleCrud\Row;
 use SimpleCrud\Table;
 use Symfony\Component\CssSelector\CssSelectorConverter;
+use HtmlParser\Parser as HtmlParser;
 use DOMDocument;
 use DOMXPath;
 use DOMNode;
@@ -42,18 +43,12 @@ class Parser
     {
         $db = $feed->getTable()->getDatabase();
 
-        $data = $this->runScrapper($item->get_link(), $db->scrapper);
-        $data['guid'] = $item->get_id();
-        $data['publishedAt'] = $item->get_date('Y-m-d H:i:s') ?: $data['publishedAt'];
-
-        if (empty($data['body'])) {
-            $data['body'] = $item->get_content(true);
-        }
+        $data = $this->runScrapper($item->get_link(), $item, $db->scrapper);
 
         return $data;
     }
 
-    public function runScrapper(string $url, Table $scrappers, $redirect = true)
+    public function runScrapper(string $url, SimplePie_Item $item, Table $scrappers, $redirect = true): array
     {
         $embed = Embed::create($url);
 
@@ -64,33 +59,40 @@ class Parser
                         ->where('url LIKE ', "%{$url}%")
                         ->run();
 
-        $body = $this->extractBody($embed->getResponse(), $scrapper) ?: $embed->code;
+        if ($scrapper) {
+            $body = $this->extractBody($embed->getResponse(), $scrapper);
 
-        if (filter_var($body, FILTER_VALIDATE_URL)) {
-            if ($redirect) {
-                return $this->runScrapper($body, $scrappers, false);
+            if (filter_var($body, FILTER_VALIDATE_URL)) {
+                if ($redirect) {
+                    return $this->runScrapper($body, $item, $scrappers, false);
+                }
+    
+                var_dump($url);
+    
+                die();
             }
+        } else {
+            $body = $embed->code ?: $item->get_content(true);
+        }
 
-            var_dump($url);
-
-            die();
+        if ($body) {
+            $body = HtmlParser::parseFragment($body);
+            $this->cleanCode($body, $embed->getResponse()->getUrl());
         }
 
         return [
             'url' => $embed->url,
             'title' => $embed->title,
             'description' => $embed->description,
-            'publishedAt' => $embed->publishedDate,
+            'publishedAt' => $item->get_date('Y-m-d H:i:s') ?: $embed->publishedDate,
             'image' => $embed->image,
-            'body' => $body
+            'body' => $body ? HtmlParser::stringify($body) : null,
+            'guid' => $item->get_id(),
         ];
     }
 
-    private function extractBody(Response $response, Row $scrapper = null): ?string
+    private function extractBody(Response $response, Row $scrapper): ?string
     {
-        if (!$scrapper) {
-            return null;
-        }
         $contentSelector = $scrapper->contentSelector;
         $document = $response->getHtmlContent();
 
@@ -112,15 +114,6 @@ class Parser
         //Get content
         $content = array_map(
             function ($element) use ($xpath, $response) {
-                $this->cleanCode($xpath, $element);
-                $this->resolveUrls($xpath, $element, $response->getUrl());
-        
-                if (in_array($element->tagName, ['img', 'video', 'audio', 'ul', 'ol'])) {
-                    $this->resolveSrc($element, $response->getUrl());
-        
-                    return $element->ownerDocument->saveHTML($element);
-                }
-        
                 if ($element->tagName === 'a') {
                     return $element->getAttribute('href');
                 }
@@ -146,8 +139,10 @@ class Parser
         return $entries->length ? iterator_to_array($entries, false) : [];
     }
 
-    private function cleanCode(DOMXPath $xpath, DOMNode $context)
+    private function cleanCode(DOMNode $context, Url $url)
     {
+        $xpath = new DOMXPath($context->ownerDocument);
+
         foreach ($this->select($xpath, '[class],[id],[style]', $context) as $element) {
             $element->removeAttribute('class');
             $element->removeAttribute('id');
@@ -157,6 +152,8 @@ class Parser
         foreach ($this->select($xpath, '[aria-hidden],[hidden],meta,style,canvas,svg,form,script,template,link,.hidden') as $element) {
             $element->parentNode->removeChild($element);
         }
+
+        $this->resolveUrls($xpath, $context, $url);
     }
 
     private function resolveUrls(DOMXPath $xpath, DOMNode $context, Url $url)
@@ -171,7 +168,9 @@ class Parser
         }
 
         foreach ($this->select($xpath, '[src]', $context) as $element) {
-            $this->resolveSrc($element, $url);
+            if (in_array($element->tagName, ['img', 'video', 'audio', 'ul', 'ol'])) {
+                $this->resolveSrc($element, $url);
+            }
         }
     }
 
