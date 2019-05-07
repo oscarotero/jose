@@ -38,7 +38,8 @@ class LatestEntries
         }
 
         if ($search) {
-            $query->where('entry.title LIKE ', "%{$search}%");
+            $query->where('entry.title LIKE ', "%{$search}%")
+                  ->orWhere('entry.description LIKE ', "%{$search}%");
         }
 
         $result = $query->run();
