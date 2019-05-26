@@ -86,7 +86,7 @@ class Parser
             'description' => $embed->description,
             'publishedAt' => $item->get_date('Y-m-d H:i:s') ?: $embed->publishedDate,
             'image' => $embed->image,
-            'body' => $body ? HtmlParser::stringify($body) : null,
+            'body' => $body ? str_ireplace(['<noscript>', '</noscript>'], '', HtmlParser::stringify($body)) : null,
             'guid' => $item->get_id(),
         ];
     }
