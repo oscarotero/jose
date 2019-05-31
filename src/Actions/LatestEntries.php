@@ -22,7 +22,7 @@ class LatestEntries
             ->where('feed.isEnabled = 1')
             ->where('entry.isHidden = 0')
             ->page($page)
-            ->perPage(50)
+            ->perPage(25)
             ->orderBy('entry.id DESC');
 
         if ($saved) {
