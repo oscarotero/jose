@@ -51,9 +51,9 @@
     <details class="entry-body">
         <summary>See body</summary>
 
-        <div>
+        <noscript>
             <?= $entry->body ?>
-        </div>
+        </noscript>
     </details>
     <?php endif ?>
 </article>
