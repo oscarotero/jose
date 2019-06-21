@@ -84,6 +84,6 @@ document.getElementById('refresh-form').addEventListener('submit', e => {
 });
 
 //Service worker
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').catch(error => console.log('Registration failed with ' + error));
-}
+// if ('serviceWorker' in navigator) {
+//     navigator.serviceWorker.register('/sw.js').catch(error => console.log('Registration failed with ' + error));
+// }
