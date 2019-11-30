@@ -2,18 +2,17 @@
 
 namespace Jose;
 
-use SimplePie;
-use SimplePie_Item;
+use DOMNode;
+use DOMXPath;
 use Embed\Embed;
 use Embed\Http\Response;
 use Embed\Http\Url;
+use HtmlParser\Parser as HtmlParser;
 use SimpleCrud\Row;
 use SimpleCrud\Table;
+use SimplePie;
+use SimplePie_Item;
 use Symfony\Component\CssSelector\CssSelectorConverter;
-use HtmlParser\Parser as HtmlParser;
-use DOMDocument;
-use DOMXPath;
-use DOMNode;
 
 class Parser
 {
@@ -35,7 +34,7 @@ class Parser
             'url' => $simplePie->get_link(),
             'feed' => $simplePie->feed_url,
             'title' => $simplePie->get_title(),
-            'entries' => $simplePie->get_items()
+            'entries' => $simplePie->get_items(),
         ];
     }
 
@@ -66,9 +65,9 @@ class Parser
                 if ($redirect) {
                     return $this->runScrapper($body, $item, $scrappers, false);
                 }
-    
+
                 var_dump($url);
-    
+
                 die();
             }
         } else {
@@ -110,20 +109,20 @@ class Parser
                 $element->parentNode->removeChild($element);
             }
         }
-        
+
         //Get content
         $content = array_map(
             function ($element) use ($xpath, $response) {
                 if ($element->tagName === 'a') {
                     return $element->getAttribute('href');
                 }
-        
+
                 $html = '';
-        
+
                 foreach ($element->childNodes as $child) {
                     $html .= $child->ownerDocument->saveHTML($child);
                 }
-        
+
                 return trim($html);
             },
             $this->select($xpath, $contentSelector)

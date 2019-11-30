@@ -4,8 +4,6 @@ namespace Jose\Controllers;
 
 use Jose\Actions\ToggleSave as ToggleSaveAction;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\ResponseInterface;
-use Middlewares\Utils\Factory;
 
 class ToggleSave extends Controller
 {

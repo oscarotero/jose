@@ -2,11 +2,11 @@
 
 namespace Jose\Providers;
 
-use Psr\Container\ContainerInterface;
-use Interop\Container\ServiceProviderInterface;
 use FastRoute;
 use FastRoute\Dispatcher;
+use Interop\Container\ServiceProviderInterface;
 use Jose\Controllers;
+use Psr\Container\ContainerInterface;
 
 class Router implements ServiceProviderInterface
 {

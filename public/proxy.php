@@ -8,7 +8,7 @@ if ($url) {
 
     foreach ($headers as $header) {
         if (strpos($header, ':') !== false) {
-           header($header);
+            header($header);
         }
     }
 

@@ -9,16 +9,16 @@ $timeago = new Westsworld\TimeAgo();
     <ul class="menu-categories">
         <?php foreach ($categories as $cat): ?>
         <li>
-            <a href="?category=<?= $cat->id ?>"
-               class="<?= $category && $category === $cat->id ? 'is-selected' : '' ?>">
-               <?= $cat->title ?>
+            <a href="?category=<?= $cat->id; ?>"
+               class="<?= $category && $category === $cat->id ? 'is-selected' : ''; ?>">
+               <?= $cat->title; ?>
             </a>
         </li>
-        <?php endforeach ?>
+        <?php endforeach; ?>
 
         <li>
             <a href="?saved=1" 
-               class="<?= empty($saved) ? '' : 'is-selected' ?>">
+               class="<?= empty($saved) ? '' : 'is-selected'; ?>">
                 Saved
             </a>
         </li>
@@ -38,12 +38,12 @@ $timeago = new Westsworld\TimeAgo();
 <ul class="entries">
     <?php foreach ($entries as $entry): ?>
     <li>
-        <?php $this->insert('entry', compact('entry', 'timeago')) ?>
+        <?php $this->insert('entry', compact('entry', 'timeago')); ?>
     </li>
-    <?php endforeach ?>
+    <?php endforeach; ?>
 </ul>
 
-<?php $page = $entries->page ?>
+<?php $page = $entries->page; ?>
 <nav class="pagination">
 <?php if ($page['previousPage']): ?>
 	<a href="?<?php
@@ -51,20 +51,20 @@ $timeago = new Westsworld\TimeAgo();
             'page' => $page['previousPage'],
             'category' => $category,
             'saved' => $saved,
-            'feed' => $feed
+            'feed' => $feed,
         ]);
-    ?>" class="button">Previous page (<?= $page['previousPage'] ?>)</a>
-<?php endif ?>
+    ?>" class="button">Previous page (<?= $page['previousPage']; ?>)</a>
+<?php endif; ?>
 <?php if ($page['nextPage']): ?>
 	<a href="?<?php
         echo http_build_query([
             'page' => $page['nextPage'],
             'category' => $category,
             'saved' => $saved,
-            'feed' => $feed
+            'feed' => $feed,
         ]);
-    ?>" class="button">Next page (<?= $page['nextPage'] ?>)</a>
-<?php endif ?>
+    ?>" class="button">Next page (<?= $page['nextPage']; ?>)</a>
+<?php endif; ?>
 </nav>
 
 <a href="#top" class="float-button">
@@ -75,4 +75,4 @@ $timeago = new Westsworld\TimeAgo();
 <p class="emptyState">
     No results
 </p>
-<?php endif ?>
+<?php endif; ?>

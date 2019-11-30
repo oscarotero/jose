@@ -2,10 +2,10 @@
 
 namespace Jose\Providers;
 
-use Psr\Container\ContainerInterface;
 use Interop\Container\ServiceProviderInterface;
-use SimpleCrud\Database;
 use PDO;
+use Psr\Container\ContainerInterface;
+use SimpleCrud\Database;
 
 class Db implements ServiceProviderInterface
 {
@@ -22,7 +22,7 @@ class Db implements ServiceProviderInterface
 
             'db' => function (ContainerInterface $container): Database {
                 return new Database($container->get('pdo'));
-            }
+            },
         ];
     }
 

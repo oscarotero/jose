@@ -2,9 +2,8 @@
 
 namespace Jose\Actions;
 
-use SimpleCrud\Database;
-use SimpleCrud\RowCollection;
 use Psr\Log\LoggerInterface;
+use SimpleCrud\Database;
 use Throwable;
 
 class UpdateFeeds
@@ -50,7 +49,7 @@ class UpdateFeeds
                 'exception' => $e,
                 'file' => __FILE__,
                 'line' => __LINE__,
-                'data' => $data
+                'data' => $data,
             ]);
         }
     }

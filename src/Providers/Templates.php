@@ -2,8 +2,8 @@
 
 namespace Jose\Providers;
 
-use Jose\App;
 use Interop\Container\ServiceProviderInterface;
+use Jose\App;
 use League\Plates\Engine;
 
 class Templates implements ServiceProviderInterface

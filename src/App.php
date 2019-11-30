@@ -4,10 +4,10 @@ namespace Jose;
 
 use Fol\App as FolApp;
 use Middlewares;
-use Middlewares\Utils\Factory;
 use Middlewares\Utils\Dispatcher;
-use Psr\Http\Message\ServerRequestInterface;
+use Middlewares\Utils\Factory;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class App extends FolApp
 {
@@ -15,10 +15,10 @@ class App extends FolApp
     {
         parent::__construct(dirname(__DIR__), Factory::createUri(env('JOSE_URL')));
 
-        $this->addServiceProvider(new Providers\Db);
-        $this->addServiceProvider(new Providers\Router);
-        $this->addServiceProvider(new Providers\Templates);
-        $this->addServiceProvider(new Providers\Logger);
+        $this->addServiceProvider(new Providers\Db());
+        $this->addServiceProvider(new Providers\Router());
+        $this->addServiceProvider(new Providers\Templates());
+        $this->addServiceProvider(new Providers\Logger());
     }
 
     public function dispatch(ServerRequestInterface $request): ResponseInterface
@@ -31,7 +31,7 @@ class App extends FolApp
             (new Middlewares\ReportingLogger($this->get('logger')))
                 ->message('JS Error'),
             new Middlewares\DigestAuthentication([
-                env('JOSE_USERNAME') => env('JOSE_PASSWORD')
+                env('JOSE_USERNAME') => env('JOSE_PASSWORD'),
             ]),
             new Middlewares\ErrorHandler(),
             new Middlewares\GzipEncoder(),

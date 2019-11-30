@@ -2,13 +2,13 @@
 
 namespace Jose\Actions;
 
+use Datetime;
+use Imagecow\Image;
 use Jose\Parser;
+use Psr\Log\LoggerInterface;
 use SimpleCrud\Database;
 use SimpleCrud\Row;
-use Psr\Log\LoggerInterface;
-use Imagecow\Image;
 use Throwable;
-use Datetime;
 
 class FetchNewEntries
 {
@@ -38,7 +38,7 @@ class FetchNewEntries
     private function updateFeed(Row $feed)
     {
         $parsed = $this->parser->parseFeed($feed->feed);
-        
+
         if (!$feed->lastCheckAt) {
             $feed->title = $parsed['title'];
             $feed->url = $parsed['url'];
@@ -78,7 +78,7 @@ class FetchNewEntries
                         'exception' => $e,
                         'file' => __FILE__,
                         'line' => __LINE__,
-                        'data' => $data ?? null
+                        'data' => $data ?? null,
                     ]);
                 }
             }
@@ -104,7 +104,7 @@ class FetchNewEntries
                     'data' => Image::fromFile($url)
                                 ->resizeCrop(100, 100)
                                 ->format('jpg')
-                                ->base64()
+                                ->base64(),
                 ])
                 ->run();
         } catch (Throwable $e) {

@@ -4,8 +4,6 @@ namespace Jose\Controllers;
 
 use Jose\Actions\ToggleHide as ToggleHideAction;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\ResponseInterface;
-use Middlewares\Utils\Factory;
 
 class ToggleHide extends Controller
 {

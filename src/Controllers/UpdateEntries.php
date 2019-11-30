@@ -3,9 +3,8 @@
 namespace Jose\Controllers;
 
 use Jose\Actions\FetchNewEntries;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\ResponseInterface;
 use Middlewares\Utils\Factory;
+use Psr\Http\Message\ServerRequestInterface;
 
 class UpdateEntries extends Controller
 {
@@ -17,7 +16,7 @@ class UpdateEntries extends Controller
         );
 
         $newEntries();
-        
+
         return Factory::createResponse(302)
             ->withHeader('Location', (string) $this->app->getUri());
     }

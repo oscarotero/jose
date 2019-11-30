@@ -2,11 +2,11 @@
 
 namespace Jose\Providers;
 
-use Jose\App;
 use Interop\Container\ServiceProviderInterface;
-use Monolog\Logger as MonologLogger;
-use Monolog\Handler\StreamHandler;
+use Jose\App;
 use Monolog\Handler\ErrorLogHandler;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger as MonologLogger;
 
 class Logger implements ServiceProviderInterface
 {

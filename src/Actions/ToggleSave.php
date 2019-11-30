@@ -2,9 +2,8 @@
 
 namespace Jose\Actions;
 
-use SimpleCrud\Database;
-use SimpleCrud\RowCollection;
 use Psr\Log\LoggerInterface;
+use SimpleCrud\Database;
 use Throwable;
 
 class ToggleSave
@@ -35,7 +34,7 @@ class ToggleSave
                 'exception' => $e,
                 'file' => __FILE__,
                 'line' => __LINE__,
-                'data' => $id
+                'data' => $id,
             ]);
         }
     }

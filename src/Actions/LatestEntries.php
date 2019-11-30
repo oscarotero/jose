@@ -45,7 +45,7 @@ class LatestEntries
         $result = $query->run();
         $page = $query->getPageInfo();
         $result->setData(compact('page'));
-      
+
         return $result;
     }
 }

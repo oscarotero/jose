@@ -1,33 +1,33 @@
 {
     "require": {
-        "php": ">=7.2",
-        "oscarotero/fol": "^0.3.0",
+        "php": "^7.2",
+        "oscarotero/fol": "^1.0.0",
         "simplepie/simplepie": "^1.5",
         "zendframework/zend-diactoros": "^2.0",
         "oscarotero/server": "^0.2.0",
-        "middlewares/utils": "^2.0",
-        "middlewares/negotiation": "^1.0",
+        "middlewares/utils": "^3.0",
+        "middlewares/fast-route": "^2.0",
+        "middlewares/encoder": "^2.0",
+        "middlewares/error-handler": "^3.0",
+        "middlewares/http-authentication": "^2.0",
+        "middlewares/negotiation": "^2.0",
+        "middlewares/payload": "^3.0",
+        "middlewares/reporting-logger": "^2.0",
+        "middlewares/request-handler": "^2.0",
+        "middlewares/base-path": "^2.0",
+        "middlewares/response-time": "^2.0",
         "embed/embed": "^3.3",
         "simple-crud/simple-crud": "^7.0",
-        "robmorgan/phinx": "^0.10.0",
+        "robmorgan/phinx": "^0.11.0",
         "league/plates": "^3.3",
-        "middlewares/fast-route": "^1.0",
-        "middlewares/request-handler": "^1.1",
-        "middlewares/error-handler": "^1.0",
         "symfony/css-selector": "^4.0",
-        "monolog/monolog": "^1.23",
+        "monolog/monolog": "^2.0",
         "symfony/yaml": "^4.0",
-        "middlewares/base-path": "^1.0",
         "vlucas/phpdotenv": "^3.2",
         "oscarotero/env": "^1.1",
         "jimmiw/php-time-ago": "^3.0",
         "imagecow/imagecow": "^2.3",
-        "middlewares/encoder": "^1.0",
-        "middlewares/http-authentication": "^1.0",
-        "middlewares/reporting-logger": "^1.0",
-        "middlewares/payload": "^2.0",
         "zendframework/zend-httphandlerrunner": "^1.0",
-        "middlewares/response-time": "^1.1",
         "oscarotero/html-parser": "^0.1.0"
     },
     "autoload": {
@@ -41,6 +41,11 @@
         }
     },
     "scripts": {
-        "start": "php -S localhost:8888 -t public public/index.php"
+        "start": "php -S localhost:8888 -t public public/index.php",
+        "cs-fix": "php-cs-fixer fix",
+        "migrate": "phinx migrate"
+    },
+    "require-dev": {
+        "oscarotero/php-cs-fixer-config": "^1.0"
     }
 }

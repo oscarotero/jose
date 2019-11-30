@@ -8,7 +8,7 @@
     <link rel="manifest" href="manifest.json">
 </head>
 <body id="top">
-    <?= $this->section('content') ?>
+    <?= $this->section('content'); ?>
     <script src="scripts.js" type="module"></script>
 </body>
 </html>

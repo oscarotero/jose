@@ -4,7 +4,6 @@ namespace Jose\Controllers;
 
 use Jose\Actions\LatestEntries;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\ResponseInterface;
 
 class ListEntries extends Controller
 {
@@ -36,7 +35,7 @@ class ListEntries extends Controller
             'page' => $page,
             'saved' => $saved ?: null,
             'category' => $category,
-            'feed' => $feed
+            'feed' => $feed,
         ]);
     }
 }

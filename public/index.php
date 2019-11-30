@@ -15,7 +15,6 @@ ini_set('expose_php', 0);
 include dirname(__DIR__).'/vendor/autoload.php';
 
 if (php_sapi_name() === 'cli-server' && $file = Server::run(__DIR__)) {
-    
     if (substr($file, -9) === 'proxy.php') {
         require 'proxy.php';
         return;
