@@ -10,7 +10,7 @@
 ## Requerimentos
 
 - Mysql
-- Php 7
+- Php 7.2
 - Un navegador moderno (Non IE)
 
 ## Instalación
