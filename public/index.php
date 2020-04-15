@@ -1,7 +1,6 @@
 <?php
 
-use Zend\Diactoros\ServerRequestFactory;
-use Zend\HttpHandlerRunner\Emitter\SapiEmitter;
+use Laminas\Diactoros\ServerRequestFactory;
 
 //Error configuration and security
 ini_set('error_reporting', E_ALL);
@@ -24,11 +23,10 @@ if (php_sapi_name() === 'cli-server' && $file = Server::run(__DIR__)) {
 }
 
 //Init .env variables
-Dotenv\Dotenv::create(dirname(__DIR__))->load();
+Dotenv\Dotenv::createMutable(dirname(__DIR__))->load();
 
 Env::init();
 
 //Execute the app
 $app = new Jose\App();
-$response = $app->dispatch(ServerRequestFactory::fromGlobals());
-(new SapiEmitter())->emit($response);
+$app->dispatch(ServerRequestFactory::fromGlobals());

@@ -1,9 +1,8 @@
 {
     "require": {
-        "php": "^7.2",
+        "php": "^7.4",
         "oscarotero/fol": "^1.0.0",
         "simplepie/simplepie": "^1.5",
-        "zendframework/zend-diactoros": "^2.0",
         "oscarotero/server": "^0.2.0",
         "middlewares/utils": "^3.0",
         "middlewares/fast-route": "^2.0",
@@ -16,28 +15,24 @@
         "middlewares/request-handler": "^2.0",
         "middlewares/base-path": "^2.0",
         "middlewares/response-time": "^2.0",
-        "embed/embed": "^3.3",
+        "embed/embed": "^4.0",
         "simple-crud/simple-crud": "^7.0",
-        "robmorgan/phinx": "^0.11.0",
+        "robmorgan/phinx": "^0.12.0",
         "league/plates": "^3.3",
         "symfony/css-selector": "^4.0",
         "monolog/monolog": "^2.0",
         "symfony/yaml": "^4.0",
-        "vlucas/phpdotenv": "^3.2",
+        "vlucas/phpdotenv": "^4.1",
         "oscarotero/env": "^1.1",
         "jimmiw/php-time-ago": "^3.0",
         "imagecow/imagecow": "^2.3",
-        "zendframework/zend-httphandlerrunner": "^1.0",
-        "oscarotero/html-parser": "^0.1.0"
+        "oscarotero/html-parser": "^0.1.0",
+        "laminas/laminas-diactoros": "^2.2",
+        "middlewares/emitter": "^1.0"
     },
     "autoload": {
         "psr-4": {
             "Jose\\": "src/"
-        }
-    },
-    "config": {
-        "platform": {
-            "php": "7.2"
         }
     },
     "scripts": {
