@@ -2,26 +2,21 @@
 
 namespace Jose;
 
-use DOMNode;
-use DOMXPath;
-use Embed\Embed;
 use Embed\Document;
+use Embed\Embed;
 use Embed\Extractor;
-use HtmlParser\Parser as HtmlParser;
+use function Embed\isHttp;
 use SimpleCrud\Row;
 use SimpleCrud\Table;
 use SimplePie;
 use SimplePie_Item;
-use Symfony\Component\CssSelector\CssSelectorConverter;
 
 class Parser
 {
-    private $converter;
     private $embed;
 
     public function __construct()
     {
-        $this->converter = new CssSelectorConverter();
         $this->embed = new Embed();
     }
 
@@ -53,6 +48,16 @@ class Parser
     {
         $info = $this->embed->get($url);
 
+        $data = [
+            'url' => $info->url,
+            'title' => $info->title,
+            'description' => $info->description,
+            'publishedAt' => $item->get_date('Y-m-d H:i:s') ?: $info->publishedDate,
+            'body' => null,
+            'image' => $info->image,
+            'guid' => $item->get_id(),
+        ];
+
         $url = $info->resolveUri('/');
 
         $scrapper = $scrappers->select()
@@ -63,30 +68,20 @@ class Parser
         $this->cleanCode($info);
 
         if ($scrapper) {
-            $body = $this->extractBody($info->getDocument(), $scrapper);
+            $data['body'] = $this->extractBody($info->getDocument(), $scrapper);
 
-            if (filter_var($body, FILTER_VALIDATE_URL)) {
+            if (filter_var($data['body'], FILTER_VALIDATE_URL)) {
                 if ($redirect) {
-                    return $this->runScrapper($body, $item, $scrappers, false);
+                    return $this->runScrapper($data['body'], $item, $scrappers, false);
                 }
 
                 var_dump($url);
 
                 die();
             }
-        } else {
-            $body = $info->getDocument()->select('.//body')->node();
         }
 
-        return [
-            'url' => $info->url,
-            'title' => $info->title,
-            'description' => $info->description,
-            'publishedAt' => $item->get_date('Y-m-d H:i:s') ?: $info->publishedDate,
-            'image' => $info->image,
-            'body' => $body ? str_ireplace(['<noscript>', '</noscript>'], '', HtmlParser::stringify($body)) : null,
-            'guid' => $item->get_id(),
-        ];
+        return $data;
     }
 
     private function extractBody(Document $document, Row $scrapper): ?string
@@ -97,7 +92,7 @@ class Parser
 
         //Remove ignored
         if ($scrapper->ignoredSelector) {
-            $document->remove($this->converter->toXpath($scrapper->ignoredSelector));
+            $document->removeCss($scrapper->ignoredSelector);
         }
 
         //Get content
@@ -115,7 +110,7 @@ class Parser
 
                 return trim($html);
             },
-            $document->select($this->converter->toXpath($scrapper->contentSelector))->nodes()
+            $document->selectCss($scrapper->contentSelector)->nodes()
         );
 
         return implode('', $content) ?: null;
@@ -125,13 +120,13 @@ class Parser
     {
         $document = $info->getDocument();
 
-        foreach ($document->select($this->converter->toXpath('[class],[id],[style]'))->nodes() as $element) {
+        foreach ($document->selectCss('[class],[id],[style]')->nodes() as $element) {
             $element->removeAttribute('class');
             $element->removeAttribute('id');
             $element->removeAttribute('style');
         }
 
-        $document->remove($this->converter->toXpath('[aria-hidden],[hidden],meta,style,canvas,svg,form,script,template,link,.hidden'));
+        $document->removeCss('[aria-hidden],[hidden],meta,style,canvas,svg,form,script,template,link,.hidden');
 
         $this->resolveUrls($info);
     }
@@ -140,23 +135,26 @@ class Parser
     {
         $document = $info->getDocument();
 
-        foreach ($document->select($this->converter->toXpath('[href]'))->nodes() as $element) {
+        foreach ($document->selectCss('[href]')->nodes() as $element) {
             $href = $element->getAttribute('href');
-            $element->setAttribute('href', $info->resolveUri($href));
+
+            if (isHttp($href)) {
+                $element->setAttribute('href', $info->resolveUri($href));
+            }
 
             if ($element->nodeName === 'a') {
                 $element->setAttribute('target', '_blank');
             }
         }
 
-        foreach ($document->select($this->converter->toXpath('[src]'))->nodes() as $element) {
+        foreach ($document->selectCss('[src]')->nodes() as $element) {
             if (!in_array($element->tagName, ['img', 'video', 'audio', 'ul', 'ol'])) {
                 continue;
             }
 
             $src = $element->getAttribute('src');
 
-            if ($src) {
+            if ($src && isHttp($src)) {
                 $proxied = 'proxy.php?'.http_build_query(['url' => $info->resolveUri($src)]);
                 $element->setAttribute('src', $proxied);
             }

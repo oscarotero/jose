@@ -12,19 +12,19 @@ Env::init();
 
 $app = new Jose\App();
 
-$updateFeeds = new Actions\UpdateFeeds(
-    $app->get('db'),
-    $app->get('logger')
-);
-$updateScrapper = new Actions\updateScrapper(
-    $app->get('db'),
-    $app->get('logger')
-);
+// $updateFeeds = new Actions\UpdateFeeds(
+//     $app->get('db'),
+//     $app->get('logger')
+// );
+// $updateScrapper = new Actions\updateScrapper(
+//     $app->get('db'),
+//     $app->get('logger')
+// );
 $newEntries = new Actions\FetchNewEntries(
     $app->get('db'),
     $app->get('logger')
 );
 
-$updateFeeds(Yaml::parseFile('subscriptions.yaml'));
-$updateScrapper(Yaml::parseFile('scrapper.yaml'));
+// $updateFeeds(Yaml::parseFile('subscriptions.yaml'));
+// $updateScrapper(Yaml::parseFile('scrapper.yaml'));
 $newEntries();

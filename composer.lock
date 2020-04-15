@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f1b379d36abc2500a1601839e97f52e",
+    "content-hash": "7aba73309d0f0349b1ac898abc185ff9",
     "packages": [
         {
             "name": "atlas/pdo",
@@ -453,16 +453,16 @@
         },
         {
             "name": "embed/embed",
-            "version": "v4.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "d854abdee7a28e7620c1f815f154f5a2f051f8bb"
+                "reference": "a4890e4ab81cdb0ae02728a9dd1c0ce14fd3e164"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/d854abdee7a28e7620c1f815f154f5a2f051f8bb",
-                "reference": "d854abdee7a28e7620c1f815f154f5a2f051f8bb",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/a4890e4ab81cdb0ae02728a9dd1c0ce14fd3e164",
+                "reference": "a4890e4ab81cdb0ae02728a9dd1c0ce14fd3e164",
                 "shasum": ""
             },
             "require": {
@@ -514,7 +514,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2020-03-13T17:36:10+00:00"
+            "time": "2020-04-15T18:50:20+00:00"
         },
         {
             "name": "imagecow/imagecow",
@@ -3418,16 +3418,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v2.16.2",
+            "version": "v2.16.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "c460a3cbaa58f983fe026cd52c45950bf61e9239"
+                "reference": "83baf823a33a1cbd5416c8626935cf3f843c10b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/c460a3cbaa58f983fe026cd52c45950bf61e9239",
-                "reference": "c460a3cbaa58f983fe026cd52c45950bf61e9239",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/83baf823a33a1cbd5416c8626935cf3f843c10b0",
+                "reference": "83baf823a33a1cbd5416c8626935cf3f843c10b0",
                 "shasum": ""
             },
             "require": {
@@ -3505,7 +3505,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2020-04-10T21:08:06+00:00"
+            "time": "2020-04-15T18:51:10+00:00"
         },
         {
             "name": "oscarotero/php-cs-fixer-config",
@@ -4095,7 +4095,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "embed/embed": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
