@@ -65,8 +65,6 @@ class Parser
                         ->where('url LIKE ', "%{$url}%")
                         ->run();
 
-        $this->cleanCode($info);
-
         if ($scrapper) {
             $data['body'] = $this->extractBody($info->getDocument(), $scrapper);
 
@@ -84,8 +82,10 @@ class Parser
         return $data;
     }
 
-    private function extractBody(Document $document, Row $scrapper): ?string
+    private function extractBody(Extractor $info, Row $scrapper): ?string
     {
+        $document = $info->getDocument();
+
         if (!$scrapper->contentSelector) {
             return null;
         }
@@ -94,6 +94,9 @@ class Parser
         if ($scrapper->ignoredSelector) {
             $document->removeCss($scrapper->ignoredSelector);
         }
+
+        //Clean code
+        $this->cleanCode($info);
 
         //Get content
         $content = array_map(
